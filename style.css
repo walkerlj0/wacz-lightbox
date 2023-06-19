@@ -1,0 +1,26 @@
+/* Adapted from: https://www.swyx.io/css-100-bytes */
+html {
+  max-width: 70ch;
+  padding: 3em 1em;
+  margin: auto;
+  line-height: 1.75;
+  font-size: 1.25em;
+  /* https://systemfontstack.com/ */
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+    sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 3em 0 1em;
+}
+p,
+ul,
+ol {
+  margin-bottom: 2em;
+  font-family: sans-serif;
+}

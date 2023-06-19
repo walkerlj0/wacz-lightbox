@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Embed a web archive</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/replaywebpage@1.8.1/ui.js"></script>
+  </head>
+  <body>
+    <h1>Embed a web archive</h1>
+    <p>
+      Using the built-in WACZ embed from Webrecorder is simple. The
+      documentation is available
+      <a href="https://replayweb.page/docs/embedding">here</a>.
+    </p>
+    <p>
+      Here's an example embed. You can view the source of this page to see how
+      it's done.
+    </p>
+    <replay-web-page
+      style="height: 500px"
+      source="tweet-example.wacz"
+      url="https://oembed.link/https://twitter.com/webrecorder_io/status/1565881026215219200"
+    ></replay-web-page>
+    <p>
+      It's not mentioned in the docs yet, but Firefox has a some stricter CORS
+      requirements than Google Chrome due to a bug. So if you are loading a WACZ
+      file from a different origin than your UI, you will need to serve that
+      file with the appropriate CORS headers to support Firefox.
+      <a href="https://github.com/webrecorder/replayweb.page/issues/168"
+        >Source</a
+      >
+    </p>
+    <pre>
+access-control-allow-headers: *
+access-control-allow-methods: HEAD,GET,OPTIONS
+access-control-allow-origin: *
+    </pre>
+    <p>
+      Make sure the server actually responds to <code>OPTIONS</code> requests.
+    </p>
+  </body>
+</html>
