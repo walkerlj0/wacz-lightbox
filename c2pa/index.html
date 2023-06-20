@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C2PA</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      #results {
+        border: solid #ccc 1px;
+        border-collapse: collapse;
+      }
+
+      #results td,
+      th {
+        border: solid #ccc 1px;
+        padding: 10px;
+      }
+
+      #results th {
+        background-color: #eee;
+      }
+
+      #results img.thumbnail {
+        width: 150px;
+        height: auto;
+      }
+    </style>
+    <script type="module">
+      import {
+        createC2pa,
+        selectProducer,
+      } from "https://cdn.jsdelivr.net/npm/c2pa@0.16.1/+esm";
+
+      const sampleImage =
+        "https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg";
+
+      (async () => {
+        let output = [];
+
+        // Initialize the c2pa-js SDK
+        const c2pa = await createC2pa({
+          wasmSrc:
+            "https://cdn.jsdelivr.net/npm/c2pa@0.16.1/dist/assets/wasm/toolkit_bg.wasm",
+          workerSrc:
+            "https://cdn.jsdelivr.net/npm/c2pa@0.16.1/dist/c2pa.worker.min.js",
+        });
+
+        const { manifestStore, source } = await c2pa.read(sampleImage);
+        const activeManifest = manifestStore?.activeManifest;
+        if (activeManifest) {
+          // Get thumbnail
+          // Note: You would normally call `dispose()` when working with a
+          // component-based UI library (e.g. on component un-mount)
+          // @ts-expect-error noUnusedLocals
+          const { url, dispose } = source.thumbnail.getUrl();
+
+          // Get properties
+          const properties = {
+            title: activeManifest.title,
+            format: activeManifest.format,
+            claimGenerator: activeManifest.claimGenerator.split("(")[0]?.trim(),
+            producer: selectProducer(activeManifest)?.name ?? "Unknown",
+            thumbnail: `<img src="${url}" class="thumbnail" />`,
+            ingredients: (activeManifest.ingredients ?? [])
+              .map((i) => i.title)
+              .join(", "),
+            signatureIssuer: activeManifest.signatureInfo?.issuer,
+            signatureDate: activeManifest.signatureInfo?.time
+              ? activeManifest.signatureInfo.time
+              : "No date available",
+          };
+
+          output = Object.keys(properties).map((key) => {
+            return `
+            <tr>
+              <td>${key}</td>
+              <td>${properties[key]}</td>
+            </tr>
+          `;
+          });
+        } else {
+          output.push(`
+          <tr>
+            <td colspan="2">No provenance data found</td>
+          </tr>
+        `);
+        }
+
+        document.querySelector("#results tbody").innerHTML = output.join("");
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="..">← Back</a>
+    <h1>C2PA</h1>
+    <p>
+      There is a JavaScript SDK for the current version of C2PA, documented
+      <a
+        href="https://opensource.contentauthenticity.org/docs/js-sdk/getting-started/overview"
+        >here</a
+      >. As of June 2023, there are no officially released UI components, so a
+      UI will have be designed by Starling ourselves.
+    </p>
+    <p>
+      Here is a simple demo without much of a UI, that pulls out manifest data.
+      The demo was adapted from
+      <a
+        href="https://github.com/contentauth/c2pa-js-examples/blob/main/minimal-ts-vite/examples/active-manifest/main.ts"
+        >this</a
+      >
+      official one, with changes to work directly in the browser without
+      compilation. A simple official in-browser demo is provided
+      <a
+        href="https://github.com/contentauth/c2pa-js-examples/blob/main/esm-imports/index.html"
+        >here</a
+      >
+      as well, but it only logs to the console.
+    </p>
+    <table id="results">
+      <thead>
+        <th>Property</th>
+        <th>Value</th>
+      </thead>
+      <tbody>
+        <td colspan="3">Loading&hellip;</td>
+      </tbody>
+    </table>
+  </body>
+</html>
