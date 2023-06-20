@@ -21,7 +21,8 @@ h6 {
 p,
 ul,
 ol,
-table {
+table,
+pre {
   margin-bottom: 2em;
 }
 blockquote {
@@ -45,4 +46,18 @@ pre {
 pre {
   padding: 1em;
   overflow: auto;
+}
+pre.wide {
+  width: 80vw;
+  transform: translateX(-50%);
+  margin-left: 50%;
+}
+pre.short {
+  max-height: 50vh;
+}
+p + pre {
+  margin-top: -1em;
+}
+hr {
+  margin: 3em 0;
 }

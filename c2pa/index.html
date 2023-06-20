@@ -34,6 +34,7 @@
 
       const sampleImage =
         "https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg";
+      const sampleImage2 = window.location + "starling_example.jpg";
 
       (async () => {
         let output = [];
@@ -46,8 +47,10 @@
             "https://cdn.jsdelivr.net/npm/c2pa@0.16.1/dist/c2pa.worker.min.js",
         });
 
-        const { manifestStore, source } = await c2pa.read(sampleImage);
-        const activeManifest = manifestStore?.activeManifest;
+        // First demo
+
+        let { manifestStore, source } = await c2pa.read(sampleImage);
+        let activeManifest = manifestStore?.activeManifest;
         if (activeManifest) {
           // Get thumbnail
           // Note: You would normally call `dispose()` when working with a
@@ -86,8 +89,25 @@
           </tr>
         `);
         }
-
         document.querySelector("#results tbody").innerHTML = output.join("");
+
+        // Second demo
+
+        ({ manifestStore, source } = await c2pa.read(sampleImage2));
+        activeManifest = manifestStore?.activeManifest;
+        // document.getElementById("demo2-store").innerText =
+        //   JSON.stringify(manifestStore);
+        document.getElementById("demo2-active").innerText = JSON.stringify(
+          activeManifest,
+          null,
+          2
+        );
+
+        // Third demo
+        document.getElementById("demo3").innerText =
+          activeManifest.assertions.get("stds.exif")[0].data[
+            "exif:GPSLatitude"
+          ];
       })();
     </script>
   </head>
@@ -102,6 +122,7 @@
       >. As of June 2023, there are no officially released UI components, so a
       UI will have be designed by Starling ourselves.
     </p>
+    <h2>Official Demo</h2>
     <p>
       Here is a simple demo without much of a UI, that pulls out manifest data.
       The demo was adapted from
@@ -126,8 +147,44 @@
         <td colspan="3">Loading&hellip;</td>
       </tbody>
     </table>
+    <h2>Starling Demo</h2>
     <p>
-      The source of this page (and the demo it contains) can be seen
+      Here is another demo using
+      <a href="starling_example.jpg">an image</a> injected with
+      <a
+        href="https://github.com/starlinglab/integrity-schema/blob/main/c2pa/claim-tool-examples/claim_create.json"
+        >manifest information typical of Starling</a
+      >. In this demo the manifest is dumped directly.
+    </p>
+    <div>
+      Active manifest:
+      <pre style="height: 50vh" class="short" id="demo2-active">Loading...</pre>
+    </div>
+    <h2>Code Example</h2>
+    <p>
+      Extracting a specific piece of data such as the latitude, can be done like
+      so:
+    </p>
+    <pre class="wide">
+const { manifestStore, source } = await c2pa.read(sampleImage2);
+const activeManifest = manifestStore?.activeManifest;
+const lat = activeManifest.assertions.get("stds.exif")[0].data["exif:GPSLatitude"]</pre
+    >
+    <p>
+      As a demo, the latitude from the manifest above is:
+      <code id="demo3">(loading)</code>.
+    </p>
+    <p>
+      To understand further how to pull information out using the API,
+      <a
+        href="https://opensource.contentauthenticity.org/docs/js-sdk/getting-started/architecture/"
+        >this architecture diagram</a
+      >
+      from the docs is very helpful.
+    </p>
+    <hr />
+    <p>
+      The source of this page (and the demos it contains) can be seen
       <a href="https://github.com/starlinglab/web-ui/blob/main/c2pa/index.html"
         >here</a
       >.
