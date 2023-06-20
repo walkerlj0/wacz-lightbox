@@ -20,7 +20,8 @@ h6 {
 }
 p,
 ul,
-ol {
+ol,
+table {
   margin-bottom: 2em;
 }
 blockquote {
