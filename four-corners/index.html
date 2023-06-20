@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Four Corners embed</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@four-corners/fourcorners.js@0.9.5/dist/fourcorners.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@four-corners/fourcorners.js@0.9.5/dist/fourcorners.min.js"></script>
+    <script type="text/javascript">
+      window.addEventListener("load", function () {
+        const embeds = document.querySelectorAll(".fc-embed");
+        embeds.forEach((embed) => {
+          const inst = new FourCorners({
+            container: embed,
+            caption: true,
+            credit: true,
+            logo: true,
+            dark: false,
+            wasmSrc:
+              "https://cdn.jsdelivr.net/npm/@contentauth/sdk@0.8.12-alpha.10/dist/assets/wasm/toolkit_bg.wasm",
+            workerSrc:
+              "https://cdn.jsdelivr.net/npm/@contentauth/sdk@0.8.12-alpha.10/dist/cai-sdk.worker.min.js",
+          });
+        });
+      });
+    </script>
+    <style>
+      pre {
+        width: 80vw;
+        transform: translateX(-50%);
+        margin-left: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Four Corners embed</h1>
+    <blockquote>
+      The
+      <a href="https://fourcornersproject.org/en/">Four Corners Project</a>
+      allows specific information to be embedded in each of the photograph’s
+      four corners, where it is available for an interested reader to explore.
+      This increased contextualization strengthens both the authorship of the
+      photographer and the credibility of the image.
+    </blockquote>
+    <p>
+      <a href="https://github.com/four-corners/fourcorners.js"
+        >fourcorners.js</a
+      >
+      is used to apply the Four Corners UI to images. The metadata for the UI
+      can be pulled out of legacy C2PA metadata embedded inside the image.
+    </p>
+    <div class="fc-embed">
+      <img src="pingu-c2pa.jpg" />
+    </div>
+    <p>
+      The documentation for getting this to work is not easily available, the
+      README is outdated. Full documentation for legacy C2PA use will be
+      provided here.
+    </p>
+    <p>
+      The source code of this page should provide a reasonable example, but I
+      will repeat a minimal version here. Here are the steps:
+    </p>
+    <ol>
+      <li>
+        Add the fourcorners CSS and JS to the <code>&lt;head&gt;</code> of your
+        page.
+      </li>
+      <li>
+        Wrap your <code>img</code> tags in a <code>div</code> with the
+        <code>fc-embed</code> class. A different class name could be used, but
+        this is the class fourcorners.js will apply, so using it already will
+        prevent a flash of styling change.
+      </li>
+      <li>
+        Add JavaScript that targets all the <code>fc-embed</code> containers and
+        applies FourCorners to them.
+      </li>
+    </ol>
+    <p>Combined, you can get a minimal page like this:</p>
+    <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;link
+    rel=&quot;stylesheet&quot;
+    href=&quot;https://cdn.jsdelivr.net/npm/@four-corners/fourcorners.js@0.9.5/dist/fourcorners.min.css&quot;
+  /&gt;
+  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/@four-corners/fourcorners.js@0.9.5/dist/fourcorners.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script type=&quot;text/javascript&quot;&gt;
+    window.addEventListener(&quot;load&quot;, function () {
+      const embeds = document.querySelectorAll(&quot;.fc-embed&quot;);
+      embeds.forEach((embed) =&gt; {
+        const inst = new FourCorners({
+          container: embed,
+          caption: true,
+          credit: true,
+          logo: true,
+          dark: false,
+          wasmSrc:
+            &quot;https://cdn.jsdelivr.net/npm/@contentauth/sdk@0.8.12-alpha.10/dist/assets/wasm/toolkit_bg.wasm&quot;,
+          workerSrc:
+            &quot;https://cdn.jsdelivr.net/npm/@contentauth/sdk@0.8.12-alpha.10/dist/cai-sdk.worker.min.js&quot;,
+        });
+      });
+    });
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;fc-embed&quot;&gt;
+    &lt;img src=&quot;my_img.jpg&quot; /&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre
+    >
+    <p>
+      The <code>wasmSrc</code> and <code>workerSrc</code> URLs should not
+      change, as these legacy libraries are not being updated anymore. The
+      fourcorners.js version used in example is 0.9.5, the latest at time of
+      writing. That could potentially be updated in the future, but there's no
+      guarantee future versions will also work with this code.
+    </p>
+  </body>
+</html>
