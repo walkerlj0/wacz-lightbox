@@ -13,6 +13,7 @@
       documentation is available
       <a href="https://replayweb.page/docs/embedding">here</a>.
     </p>
+    <h2>Examples</h2>
     <p>
       Here's an example embed. You can view the source of this page to see how
       it's done.
@@ -22,6 +23,26 @@
       source="tweet-example.wacz"
       url="https://oembed.link/https://twitter.com/webrecorder_io/status/1565881026215219200"
     ></replay-web-page>
+    <p>
+      The demo above uses the default
+      <a href="https://replayweb.page/docs/embedding#embed-modes">embed mode</a>
+      called <code>default</code>. At Starling we will often want to use the
+      <code>replay-with-info</code>
+      mode instead, which doesn't have a navigation UI, but instead shows an
+      archival receipt with signature and hash information.
+    </p>
+    <p>
+      That mode can be set with an attribute on the
+      <code>replay-web-page</code> tag: <code>embed="replay-with-info"</code>.
+      Here is an example:
+    </p>
+    <replay-web-page
+      style="height: 500px"
+      embed="replay-with-info"
+      source="tweet-example.wacz"
+      url="https://oembed.link/https://twitter.com/webrecorder_io/status/1565881026215219200"
+    ></replay-web-page>
+    <h2>CORS</h2>
     <p>
       It's not mentioned in the docs yet, but Firefox has a some stricter CORS
       requirements than Google Chrome due to a bug. So if you are loading a WACZ
@@ -34,10 +55,11 @@
     <pre>
 access-control-allow-headers: *
 access-control-allow-methods: HEAD,GET,OPTIONS
-access-control-allow-origin: *
-    </pre>
+access-control-allow-origin: *</pre
+    >
     <p>
-      Make sure the server actually responds to <code>OPTIONS</code> requests.
+      Make sure the server actually responds to <code>OPTIONS</code> requests,
+      and with the proper 204 status code
     </p>
   </body>
 </html>

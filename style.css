@@ -24,3 +24,24 @@ ol {
   margin-bottom: 2em;
   font-family: sans-serif;
 }
+blockquote {
+  font-style: italic;
+  padding: 0 1em;
+  border-left: 5px solid grey;
+  border-radius: 5px;
+}
+code,
+pre {
+  /* https://systemfontstack.com/ */
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
+}
+code,
+pre {
+  background-color: lightgrey;
+  border-radius: 5px;
+  padding: 2px;
+}
+pre {
+  padding: 1em;
+}
