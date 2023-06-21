@@ -26,14 +26,15 @@
         height: auto;
       }
     </style>
+    <script type="module" src="./c2pa-wc/index.js"></script>
     <script type="module">
       import {
         createC2pa,
         selectProducer,
+        createL2ManifestStore,
       } from "https://cdn.jsdelivr.net/npm/c2pa@0.16.1/+esm";
 
-      const sampleImage =
-        "https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg";
+      const sampleImage = window.location + "adobe_example.jpg";
       const sampleImage2 = window.location + "starling_example.jpg";
 
       (async () => {
@@ -90,6 +91,18 @@
         `);
         }
         document.querySelector("#results tbody").innerHTML = output.join("");
+
+        // Fourth demo
+        const l2manifeststore = await createL2ManifestStore(manifestStore);
+        document
+          .getElementById("demo4")
+          .setAttribute(
+            "view-more-url",
+            "https://verify.contentauthenticity.org/inspect?source=" +
+              sampleImage
+          );
+        document.getElementById("demo4").manifestStore =
+          l2manifeststore.manifestStore;
 
         // Second demo
 
@@ -182,6 +195,30 @@ const lat = activeManifest.assertions.get("stds.exif")[0].data["exif:GPSLatitude
       >
       from the docs is very helpful.
     </p>
+    <h2>Official UI</h2>
+    <p>
+      Although not properly released yet, there are some UI components from
+      Adobe that are under development. For example, the
+      <code>cai-manifest-summary</code>:
+    </p>
+    <cai-manifest-summary id="demo4"></cai-manifest-summary>
+    <p>
+      The source code for these components is available in the
+      <a
+        href="https://github.com/contentauth/c2pa-js/tree/main/packages/c2pa-wc"
+        >c2pa-wc</a
+      >
+      package, but there essentially no documentation available yet. Importantly
+      for Starling, there is the ability to add custom data sections to the
+      widget.
+    </p>
+    <p>
+      Currently getting these UI components working requires editing the repo,
+      but I am working on getting
+      <a href="https://github.com/contentauth/c2pa-js/pull/106">a PR</a> merged
+      for that.
+    </p>
+
     <hr />
     <p>
       The source of this page (and the demos it contains) can be seen
