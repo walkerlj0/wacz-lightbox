@@ -22,7 +22,8 @@ p,
 ul,
 ol,
 table,
-pre {
+pre,
+blockquote {
   margin-bottom: 2em;
 }
 blockquote {
