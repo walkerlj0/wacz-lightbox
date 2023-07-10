@@ -1,5 +1,6 @@
 This repo contains examples maintained by Starling Labs for embedding [WACZ web archive files](https://www.notion.so/Authenticated-Web-Archives-WACZ-Files-05ddba458eaf446c8653ab041f4ed33e?pvs=4) and a visual UI that displays photographs using the [C2PA technical Standard](https://c2pa.org/)
 
+This is the main set of examples used for collaborators
 
 See the website for how to implement these as well as examples.
 
