@@ -46,10 +46,10 @@
     ></replay-web-page>
     <h2>CORS</h2>
     <p>
-      It's not mentioned in the docs yet, but Firefox has a some stricter CORS
-      requirements than Google Chrome due to a bug. So if you are loading a WACZ
-      file from a different origin than your UI, you will need to serve that
-      file with the appropriate CORS headers to support Firefox.
+      Firefox has a some stricter CORS requirements than Google Chrome due to a
+      bug. So if you are loading a WACZ file from a different origin than your
+      UI, you will need to serve that file with the appropriate CORS headers to
+      support Firefox.
       <a href="https://github.com/webrecorder/replayweb.page/issues/168"
         >Source</a
       >
@@ -62,6 +62,10 @@ access-control-allow-origin: *</pre
     <p>
       Make sure the server actually responds to <code>OPTIONS</code> requests,
       and with the proper 204 status code.
+    </p>
+    <p>
+      These CORS settings are discussed in the official docs
+      <a href="https://replayweb.page/docs/cors-settings">here</a>.
     </p>
     <h2>Examples</h2>
     <ul>
