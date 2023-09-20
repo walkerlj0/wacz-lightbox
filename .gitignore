@@ -1,0 +1,24 @@
+# Logs
+wacz-lightbox/logs
+wacz-lightbox/*.log
+wacz-lightbox/npm-debug.log*
+wacz-lightbox/yarn-debug.log*
+wacz-lightbox/yarn-error.log*
+wacz-lightbox/pnpm-debug.log*
+wacz-lightbox/lerna-debug.log*
+
+wacz-lightbox/node_modules
+# wacz-lightbox/dist
+wacz-lightbox/dist-ssr
+wacz-lightbox/*.local
+
+# Editor directories and files
+wacz-lightbox/.vscode/*
+wacz-lightbox/!.vscode/extensions.json
+wacz-lightbox/.idea
+wacz-lightbox/.DS_Store
+wacz-lightbox/*.suo
+wacz-lightbox/*.ntvs*
+wacz-lightbox/*.njsproj
+wacz-lightbox/*.sln
+wacz-lightbox/*.sw?
