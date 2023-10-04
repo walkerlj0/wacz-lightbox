@@ -1,7 +1,7 @@
 
 ## Usage 
 
-The index js and css files and then use
+Load in the index js and css files in `dist/assets/` and then use
 
 `<wacz-lightbox></wacz-lightbox>`
 
