@@ -154,7 +154,7 @@
   /* @media(max-width: 800px) { */
     replay-web-page {
       position: absolute;
-      top: 100px;
+      top: 112px;
       z-index: 1;
     }
 
