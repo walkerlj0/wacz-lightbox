@@ -85,7 +85,7 @@
       <replay-web-page
         id="embed" 
         source={path + filename} 
-        embed="replay-only" 
+        embed="replayonly" 
         {url}
         replayBase={replayBase}
         >
