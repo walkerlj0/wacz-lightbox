@@ -1,4 +1,5 @@
 <svelte:options customElement="wacz-lightbox"/>
+<svelte:window bind:innerWidth/>
 
 <script>
 
@@ -12,6 +13,10 @@
 
   // let json_content;
   // let json;
+
+  let innerWidth = 0;
+  let mobile = true;
+  $: mobile = innerWidth < 800;
 
   let url, archive_name, date_crawled, domain, domainCert,
     package_hash, iscn, numbers, avalanche, ipfs, filecoin,
@@ -92,11 +97,16 @@
       </replay-web-page>
       
       <!-- <button on:click={open}>View archive information</button> -->
-      <details>
-        <summary><span>View archive information</span></summary>
-      </details>
+      {#if mobile}
+        <details>
+          <summary><span>Click to view WACZ & registration info</span></summary>
+        </details>
+      {/if}
 
         <div id="info" class="content">
+          {#if !mobile}
+            <p class="heading"><mark>WACZ & Registration Information</mark></p>
+          {/if}
           {#if parsed_json}
           <div class="property-group">
             <p><strong>Archive name</strong><br>{archive_name}</p>
@@ -118,20 +128,20 @@
           </div>
   
           <div class="property-group">
-            <p class="subheading"><em><strong>Blockchain registration</strong></em></p>
+            <p class="subheading"><em><strong><mark>Blockchain registration</mark></strong></em></p>
             <p><strong>ISCN on Likecoin</strong><br>Transaction ID: <a href={"https://app.like.co/"}>{iscn}</a></p>
             <p><strong>Numbers Protocol on Numbers</strong><br>Transaction ID: <a href={"https://mainnet.num.network/overview"}>{numbers}</a></p>
             <p><strong>Numbers Protocol on Avalanche</strong><br>Transaction ID: <a href={"https://snowtrace.io/search?f=0&q="+avalanche}>{avalanche}</a></p>
           </div>
 
           <div class="property-group">
-            <p class="subheading"><em><strong>Storage and archiving</strong></em></p>
+            <p class="subheading"><em><strong><mark>Storage and archiving</mark></strong></em></p>
             <p><strong>IPFS</strong><br>CID: <a href={"http://ipfs.io/ipfs/"+ipfs}>{ipfs}</a></p>
             <p><strong>Filecoin</strong><br>Piece Content ID: <a href="https://filecoin.tools">{filecoin}</a></p>
           </div>
 
-          <div class="property-group">
-            <a href={"http://ipfs.io/ipfs/"+ipfs} class="button"><strong>Download archive</strong></a>
+          <div class="property-group last-info">
+            <a href={"http://ipfs.io/ipfs/"+ipfs} class="button"><strong><mark>Download archive</mark></strong></a>
           </div>
           
           {/if}
@@ -151,7 +161,7 @@
     background-color: #fff;
   }
 
-  /* @media(max-width: 800px) { */
+  @media(max-width: 799px) {
     replay-web-page {
       position: absolute;
       top: 112px;
@@ -160,16 +170,64 @@
 
     details {
       position: relative;
-      padding: 4px 10px;
-      background-color: #F2F3F7;
+      margin-left: 3px;
+      width: 100%;
+      max-width: 400px;
+      /* padding: 4px 10px; */
       z-index: 2;
-      border: 2px solid #8997C1;
+      /* border: 2px solid #8997C1; */
     }
-  /* }
+    div.content { 
+      position: relative;
+      border: 2px solid #fff;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 400ms ease-out, border 0ms 400ms linear;
+    }
+
+    details[open] + div.content {
+      /* border: 2px solid #8997C1; */
+      max-height: 1200px; /* Set a max-height value enough to show all the content */        
+      transition: max-height 400ms ease-out, border 0ms linear;
+      padding-bottom: 20px;
+    }
+
+    details[open] span::before {
+        rotate: 90deg;
+        transition: rotate 200ms ease-out;
+    }
+  }
+
+  @media(min-width: 800px) {
+    replay-web-page {
+      position: absolute;
+      top: 80px;
+      width: 50%;
+    }
+
+    details {
+      position: absolute;
+      /* padding: 4px 10px; */
+      /* border: 2px solid #8997C1; */
+      left: 50%;
+      width: calc(50% - 35px);
+    }
+    div.content {
+      position: absolute;
+      left: 50%;
+      top: 80px;
+      width: calc(50% - 10px);
+      /* border: 2px solid #888; */
+      /* background-color: ; */
+    }
+    .last-info {
+      margin-bottom: 10px;
+    }
+  } 
 
   
 
-  @media(min-width: 800px) {
+  /* @media(min-width: 800px) {
     #info, replay-web-page {
       float: left;
       width: calc(50% - 10px);
@@ -179,54 +237,46 @@
   details {
     /* max-width: 500px; */
     overflow: hidden;
-    border-radius: 30px;
-    width: 400px;
+    border-radius: 4px;
     text-align: center;
-    font-size: 20px;
+    font-size: clamp(1.13rem, calc(1.13rem + 0.00vw), 1.13rem);
     cursor: pointer;
+    padding: 1em 12px;
+    background-color: #ffc61e;
   }
 
-
-  div.content { 
+  div.content {
     margin: 1px;
-    position: relative;
     z-index: 2;
     /* width: 100%; */
-    border: 2px solid #fff;
-    border-radius: 20px;
+    border-radius: 4px;
     box-sizing: border-box;
     padding: 0 10px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 400ms ease-out, border 0ms 400ms linear;
-    background-color: #F2F3F7;
-  }
-  details[open] + div.content {
-    border: 2px solid #8997C1;
-    max-height: 1200px; /* Set a max-height value enough to show all the content */        
-    transition: max-height 400ms ease-out, border 0ms linear;
-    padding-bottom: 20px;
-
-  }
-
-  details[open] span::before {
-      rotate: 90deg;
-      transition: rotate 200ms ease-out;
+    background-color: #fff;
+    overflow-wrap: break-word;
   }
 
 
   .info-title {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
   }
 
   .property-group {
     padding-left: 4px;
-    border-left: 2px solid #213547;;
+    border-left: 2px solid #213547;
   }
 
+  .heading {
+    font-size: 24px;
+  }
   .subheading {
     font-size: 1.1em;
+  }
+
+  mark {
+    background-color: #ffc61e;
+    padding-top: 2px;
   }
 
 </style>
