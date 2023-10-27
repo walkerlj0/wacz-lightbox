@@ -31,17 +31,17 @@
       let response = await fetch(path + filename + '.json');
       const json = await response.json();
 
-      page_name = json_content.name;
-      url = json_content['private']['crawl_config']['config']['seeds'][0]['url'];
-      archive_name = json.sourceId.value;
-      date_crawled = json_content.extras.wacz.dateCrawled;
-      domain = json_content.validatedSignatures[0].custom.domain;
-      domainCert = json_content.validatedSignatures[0].custom.domainCert;
-      package_hash = json_content.validatedSignatures[0].custom.hash;
-      iscn = json.registrationRecords.iscn.txHash;
-      numbers = json.registrationRecords.numbersProtocol.numbers.txHash;
-      avalanche = json.registrationRecords.numbersProtocol.avalanche.txHash;
-      ipfs = json.content.cid;
+      page_name = json_content?.name;
+      url = json_content?.private?.crawl_config?.config?.seeds[0]?.url;
+      archive_name = json?.sourceId?.value;
+      date_crawled = json_content?.extras?.wacz?.dateCrawled;
+      domain = json_content?.validatedSignatures[0]?.custom?.domain;
+      domainCert = json_content?.validatedSignatures[0]?.custom?.domainCert;
+      package_hash = json_content?.validatedSignatures[0]?.custom?.hash;
+      iscn = json?.registrationRecords?.iscn?.txHash;
+      numbers = json?.registrationRecords?.numbersProtocol?.numbers?.txHash;
+      avalanche = json?.registrationRecords?.numbersProtocol?.avalanche?.txHash;
+      ipfs = json?.content?.cid;
       filecoin = "Will come later";
       hash(domainCert).then(hash => sha256Hash = hash);
 
