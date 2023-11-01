@@ -17,6 +17,7 @@
   let innerWidth = 0;
   let mobile = true;
   $: mobile = innerWidth < 800;
+  let visiblePane = 'replay-web';
 
   let url, archive_name, date_crawled, domain, domainCert,
     package_hash, iscn, numbers, avalanche, ipfs, filecoin,
@@ -86,28 +87,25 @@
     <div id="wacz-popup">
   
       <p class='info-title'>{page_name}</p>
-    
-      <replay-web-page
-        id="embed" 
-        source={path + filename} 
-        embed="replayonly" 
-        {url}
-        replayBase={replayBase}
-        >
-      </replay-web-page>
       
       <!-- <button on:click={open}>View archive information</button> -->
-      {#if mobile}
-        <details>
-          <summary><span>Click to view WACZ & registration info</span></summary>
-        </details>
-      {/if}
+      <div class="lightbox-controls">
+				<button on:click={() => visiblePane = 'replay-web'} data-btn="document" aria-controls="modal-details" class={"lightbox-button" + (visiblePane == 'replay-web' ? " selected" : " unselected")}>Document</button>
+				<button on:click={() => visiblePane = 'archive'} data-btn="archive" aria-controls="modal-details" class={"lightbox-button" + (visiblePane == 'archive' ? " selected" : " unselected")}>Archive</button>
+				<button on:click={() => visiblePane = 'registration'} data-btn="registration" aria-controls="modal-details" class={"lightbox-button" + (visiblePane == 'registration' ? " selected" : " unselected")}>Registration</button>
+			</div>
 
-        <div id="info" class="content">
-          {#if !mobile}
-            <p class="heading"><mark>WACZ & Registration Information</mark></p>
-          {/if}
-          {#if parsed_json}
+      {#if visiblePane == 'replay-web'}
+        <replay-web-page
+          id="embed" 
+          source={path + filename} 
+          embed="replayonly" 
+          {url}
+          replayBase={replayBase}
+          >
+        </replay-web-page>
+      {:else if visiblePane == 'archive'}
+        {#if parsed_json}
           <div class="property-group">
             <p><strong>Archive name</strong><br>{archive_name}</p>
           </div>
@@ -126,9 +124,11 @@
           <div class="property-group">
             <p><strong>Package hash</strong><br>{package_hash}</p>
           </div>
-  
+        {/if}
+      {:else}
+        {#if parsed_json}
           <div class="property-group">
-            <p class="subheading"><em><strong><mark>Blockchain registration</mark></strong></em></p>
+            <p class="subheading"><em><strong><mark>Registration</mark></strong></em></p>
             <p><strong>ISCN on Likecoin</strong><br>Transaction ID: <a href={"https://app.like.co/"}>{iscn}</a></p>
             <p><strong>Numbers Protocol on Numbers</strong><br>Transaction ID: <a href={"https://mainnet.num.network/overview"}>{numbers}</a></p>
             <p><strong>Numbers Protocol on Avalanche</strong><br>Transaction ID: <a href={"https://snowtrace.io/search?f=0&q="+avalanche}>{avalanche}</a></p>
@@ -143,9 +143,9 @@
           <div class="property-group last-info">
             <a href={"http://ipfs.io/ipfs/"+ipfs} class="button"><strong><mark>Download archive</mark></strong></a>
           </div>
-          
-          {/if}
-        </div>
+        {/if}
+      {/if}
+    
 
     
     </div>  
@@ -174,7 +174,6 @@
       width: 100%;
       max-width: 400px;
       /* padding: 4px 10px; */
-      z-index: 2;
       /* border: 2px solid #8997C1; */
     }
     div.content { 
@@ -247,7 +246,6 @@
 
   div.content {
     margin: 1px;
-    z-index: 2;
     /* width: 100%; */
     border-radius: 4px;
     box-sizing: border-box;
@@ -277,6 +275,43 @@
   mark {
     background-color: #ffc61e;
     padding-top: 2px;
+  }
+
+  .lightbox-controls {
+    margin: 5px;
+    display: flex;
+    gap: .5rem;
+  }
+
+  .lightbox-button {
+    font-family: "Poppins",Helvetica,Arial,Lucida,sans-serif !important;
+    padding: 1.325em calc(1em + 12px);
+    width: 100%;
+    color: #383838;
+    background: #fff;
+    border-width: 1px;
+    border-color: #383838;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: color 300ms ease,background-color 300ms ease,border 300ms ease,border-radius 300ms ease,letter-spacing 300ms ease;
+  }
+  .lightbox-button.selected {
+    background: #ffc61e;
+    border-width: 0;
+  } 
+
+  .lightbox-button.unselected:hover {
+    color: #000 !important;
+    letter-spacing: 2px !important;
+    background-color: #bfbfbf;
+    /* background-image: initial; */
+    border-color: #bfbfbf !important;
+    border-radius: 0 !important;
   }
 
 </style>
