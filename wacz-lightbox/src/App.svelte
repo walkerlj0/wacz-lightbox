@@ -7,7 +7,7 @@
 
   export let filename = 'mono-county-pdf-01-2023-08-25T15-57-33.wacz';
   // let visible = false;
-  export let path = 'https://giacomobg.github.io/wacz-component/dist/assets/'
+  export let path = 'https://giacomobg.github.io/wacz-component/dist/assets/';
   // export let replayBase;
   export let replayBase = './replay/';
 
@@ -165,7 +165,7 @@
 
 
   #wacz-popup {
-    height: 100%;
+    height: calc(100% - 147px);
     width: 100%;
     position: absolute;
     background-color: #fff;
@@ -174,6 +174,7 @@
   /* @media(max-width: 799px) { */
     replay-web-page {
       position: relative;
+      /* height: calc(); */
       /* top: 152px; */
       z-index: 1;
     }
