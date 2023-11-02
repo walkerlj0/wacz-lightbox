@@ -8,10 +8,8 @@
 
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+div.property-group {
+  background-color: red;
 }
 
 body {

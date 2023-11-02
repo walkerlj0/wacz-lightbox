@@ -82,6 +82,10 @@
     return sha256Hash;
   }
 
+  function formatText(heading, content, link) {
+    return "<p><strong>"+heading.toUpperCase()+":</strong> " + (link ? "<a href="+link+">" : "") + content.toUpperCase() + (link ? "</a>" : "") + "</p>"
+  }
+
 </script>
 
     <div id="wacz-popup">
@@ -106,42 +110,48 @@
         </replay-web-page>
       {:else if visiblePane == 'archive'}
         {#if parsed_json}
-          <div class="property-group">
-            <p><strong>Archive name</strong><br>{archive_name}</p>
-          </div>
-          <div class="property-group">
-            <p><strong>Webpage</strong><br><a href={url}>{url}</a></p>
-          </div>
-
-          <div class="property-group">
-            <p><strong>Archived on</strong><br>{date_crawled}</p>
-          </div>
-
-          <div class="property-group">
-            <p><strong>Observed by</strong><br>{domain}<br>View certificate: <a href={'https://crt.sh/?='+sha256Hash}>{sha256Hash}</a></p>
-          </div>
-
-          <div class="property-group">
-            <p><strong>Package hash</strong><br>{package_hash}</p>
+          <div class="pane">
+            <div class="property-group">
+              {@html formatText('Archive name', archive_name)}
+            </div>
+            <div class="property-group">
+              {@html formatText('Webpage', url, url)}
+            </div>
+  
+            <div class="property-group">
+              {@html formatText('Archived on', date_crawled)}
+            </div>
+  
+            <div class="property-group">
+              {@html formatText('Observed by', domain)}
+              {@html formatText('View certificate', sha256Hash, 'https://crt.sh/?='+sha256Hash)}
+            </div>
+  
+            <div class="property-group">
+              {@html formatText('Package hash', package_hash)}
+            </div>
           </div>
         {/if}
       {:else}
         {#if parsed_json}
-          <div class="property-group">
-            <p class="subheading"><em><strong><mark>Registration</mark></strong></em></p>
-            <p><strong>ISCN on Likecoin</strong><br>Transaction ID: <a href={"https://app.like.co/"}>{iscn}</a></p>
-            <p><strong>Numbers Protocol on Numbers</strong><br>Transaction ID: <a href={"https://mainnet.num.network/overview"}>{numbers}</a></p>
-            <p><strong>Numbers Protocol on Avalanche</strong><br>Transaction ID: <a href={"https://snowtrace.io/search?f=0&q="+avalanche}>{avalanche}</a></p>
-          </div>
+          <div class="pane">
 
-          <div class="property-group">
-            <p class="subheading"><em><strong><mark>Storage and archiving</mark></strong></em></p>
-            <p><strong>IPFS</strong><br>CID: <a href={"http://ipfs.io/ipfs/"+ipfs}>{ipfs}</a></p>
-            <p><strong>Filecoin</strong><br>Piece Content ID: <a href="https://filecoin.tools">{filecoin}</a></p>
-          </div>
+            <div class="property-group">
+              <!-- <p class="subheading"><em><strong><mark>Registration</mark></strong></em></p> -->
+              {@html formatText('ISCN on Likecoin - Transaction ID', iscn, "https://app.like.co/")}
+              {@html formatText('Numbers Protocol on Numbers - Transaction ID', numbers, "https://mainnet.num.network/overview")}
+              {@html formatText('Numbers Protocol on Avalance - Transaction ID', avalanche, "https://snowtrace.io/search?f=0&q="+avalanche)}
+            </div>
 
-          <div class="property-group last-info">
-            <a href={"http://ipfs.io/ipfs/"+ipfs} class="button"><strong><mark>Download archive</mark></strong></a>
+            <div class="property-group">
+              <!-- <p class="subheading"><strong>Storage and archiving</strong></p> -->
+              {@html formatText('IPFS - CID', ipfs, "https://ipfs.io/ipfs/"+ipfs)}
+              {@html formatText('Filecoin - Piece Content ID', filecoin, "https://filecoin.tools")}
+            </div>
+
+            <div class="property-group last-info">
+              <a href={"http://ipfs.io/ipfs/"+ipfs} class="button"><strong><mark>DOWNLOAD ARCHIVE</mark></strong></a>
+            </div>
           </div>
         {/if}
       {/if}
@@ -161,10 +171,10 @@
     background-color: #fff;
   }
 
-  @media(max-width: 799px) {
+  /* @media(max-width: 799px) { */
     replay-web-page {
-      position: absolute;
-      top: 152px;
+      position: relative;
+      /* top: 152px; */
       z-index: 1;
     }
 
@@ -195,10 +205,10 @@
         rotate: 90deg;
         transition: rotate 200ms ease-out;
     }
-  }
+  /* } */
 
-  @media(min-width: 800px) {
-    replay-web-page {
+  /* @media(min-width: 800px) { */
+    /* replay-web-page {
       position: absolute;
       top: 80px;
       width: 50%;
@@ -206,8 +216,7 @@
 
     details {
       position: absolute;
-      /* padding: 4px 10px; */
-      /* border: 2px solid #8997C1; */
+
       left: 50%;
       width: calc(50% - 35px);
     }
@@ -216,22 +225,13 @@
       left: 50%;
       top: 80px;
       width: calc(50% - 10px);
-      /* border: 2px solid #888; */
-      /* background-color: ; */
+
     }
     .last-info {
       margin-bottom: 10px;
-    }
-  } 
+    } */
+  /* }  */
 
-  
-
-  /* @media(min-width: 800px) {
-    #info, replay-web-page {
-      float: left;
-      width: calc(50% - 10px);
-    }
-  } */
 
   details {
     /* max-width: 500px; */
@@ -262,7 +262,7 @@
 
   .property-group {
     padding-left: 4px;
-    border-left: 2px solid #213547;
+    /* border-left: 2px solid #213547; */
   }
 
   .heading {
@@ -313,5 +313,17 @@
     border-color: #bfbfbf !important;
     border-radius: 0 !important;
   }
+
+  :global(a) {
+    color: #383838;
+  }
+
+  .pane {
+    box-shadow: 1px 4px 48px rgba(0,0,0,.075);
+    margin: 40px;
+    padding: 40px;
+    overflow-wrap: break-word;
+  }
+  
 
 </style>
