@@ -3,15 +3,11 @@
 :root {
   font-family: 'Poppins',Helvetica,Arial,Lucida,sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 300;
 
     color: #383838;
     background-color: #ffffff;
 
-}
-
-div.property-group {
-  background-color: red;
 }
 
 body {
@@ -26,4 +22,6 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
+#id {
+  font-size: 40px;
+}

@@ -3,8 +3,7 @@
 
 <script>
 
-  // import * from './lib/replay/ui.js';
-
+  import downloadButton from './assets/download.svg';
   export let filename = 'mono-county-pdf-01-2023-08-25T15-57-33.wacz';
   // let visible = false;
   export let path = 'https://giacomobg.github.io/wacz-component/dist/assets/';
@@ -46,6 +45,8 @@
       filecoin = "Will come later";
       hash(domainCert).then(hash => sha256Hash = hash);
 
+      console.log('PARSED JSON');
+      console.log(archive_name);
       parsed_json = true;
   }
   import_json();
@@ -60,7 +61,10 @@
   // $: if (json_content) {
   // } 
  async function hash(data) {
-    data = data.replaceAll("-----BEGIN CERTIFICATE-----","").replaceAll("-----END CERTIFICATE-----","").replaceAll(/\s/g, '').replaceAll("=", "");
+  console.log(data.split("-----BEGIN CERTIFICATE-----")[1].split("-----END CERTIFICATE-----")[0].replaceAll(/\s/g, ''));
+    data = data.split("-----BEGIN CERTIFICATE-----")[1].split("-----END CERTIFICATE-----")[0].replaceAll(/\s/g, '');
+    // data = data.replaceAll("-----BEGIN CERTIFICATE-----","").replaceAll("-----END CERTIFICATE-----","").replaceAll(/\s/g, '').replaceAll("=", "");
+    console.log(data);
     data = atob(data);
 
     // Convert the binary data to an ArrayBuffer
@@ -83,7 +87,7 @@
   }
 
   function formatText(heading, content, link) {
-    return "<p><strong>"+heading.toUpperCase()+":</strong> " + (link ? "<a href="+link+">" : "") + content.toUpperCase() + (link ? "</a>" : "") + "</p>"
+    return "<p><strong>"+heading.toUpperCase()+ ":</strong> " + (link ? "<a href="+link+">" : "") + content.toUpperCase() + (link ? "</a>" : "") + "</p>"
   }
 
 </script>
@@ -94,11 +98,12 @@
       
       <!-- <button on:click={open}>View archive information</button> -->
       <div class="lightbox-controls">
-				<button on:click={() => visiblePane = 'replay-web'} data-btn="document" aria-controls="modal-details" class={"lightbox-button" + (visiblePane == 'replay-web' ? " selected" : " unselected")}>Document</button>
-				<button on:click={() => visiblePane = 'archive'} data-btn="archive" aria-controls="modal-details" class={"lightbox-button" + (visiblePane == 'archive' ? " selected" : " unselected")}>Archive</button>
-				<button on:click={() => visiblePane = 'registration'} data-btn="registration" aria-controls="modal-details" class={"lightbox-button" + (visiblePane == 'registration' ? " selected" : " unselected")}>Registration</button>
+				<button on:click={() => visiblePane = 'replay-web'} data-btn="document" aria-controls="panes-container" class={"lightbox-button" + (visiblePane == 'replay-web' ? " selected" : " unselected")}>Document</button>
+				<button on:click={() => visiblePane = 'archive'} data-btn="archive" aria-controls="panes-container" class={"lightbox-button" + (visiblePane == 'archive' ? " selected" : " unselected")}>Archive</button>
+				<button on:click={() => visiblePane = 'registration'} data-btn="registration" aria-controls="panes-container" class={"lightbox-button" + (visiblePane == 'registration' ? " selected" : " unselected")}>Registration</button>
 			</div>
 
+      <div id="panes-container">
       {#if visiblePane == 'replay-web'}
         <replay-web-page
           id="embed" 
@@ -108,27 +113,46 @@
           replayBase={replayBase}
           >
         </replay-web-page>
+
+        <!-- <a href={link}>{content.toUpperCase()}</a> -->
+
       {:else if visiblePane == 'archive'}
         {#if parsed_json}
           <div class="pane">
-            <div class="property-group">
-              {@html formatText('Archive name', archive_name)}
+            <div class="tooltip plus">
+                <p><strong>{'Archive name'.toUpperCase()}</strong>: 
+                  {archive_name.toUpperCase()}
+                </p>
             </div>
-            <div class="property-group">
-              {@html formatText('Webpage', url, url)}
+            <div class="tooltip plus">
+              <p><strong>{'Original URL'.toUpperCase()}<span class="far fa-question-circle">i</span></strong>
+                <span class="tooltiptext plus">The original link these webpages were archived from</span>: 
+                <a href={url}>{url.toUpperCase()}</a>
+              </p>
             </div>
-  
-            <div class="property-group">
-              {@html formatText('Archived on', date_crawled)}
+            <div class="tooltip plus">
+              <p><strong>{'Archived on'.toUpperCase()}<span class="far fa-question-circle">i</span></strong>
+                <span class="tooltiptext plus">The date and time that the website archive was captured</span>: 
+                {date_crawled.toUpperCase()}
+              </p>
+            </div>  
+            <div class="tooltip plus">
+              <p><strong>{'Observed by'.toUpperCase()}<span class="far fa-question-circle">i</span></strong>
+                <span class="tooltiptext plus">The notary, signed with a cryptographic certificate to establish a witness</span>: 
+                {domain.toUpperCase()}
+              </p>
             </div>
-  
-            <div class="property-group">
-              {@html formatText('Observed by', domain)}
-              {@html formatText('View certificate', sha256Hash, 'https://crt.sh/?='+sha256Hash)}
+            <div class="tooltip plus">
+              <p><strong>{'View certificate'.toUpperCase()}<span class="far fa-question-circle">i</span></strong>
+                <span class="tooltiptext plus">Remove this?</span>: 
+                <a href={'https://crt.sh/?='+sha256Hash}>{sha256Hash.toUpperCase()}</a>
+              </p>
             </div>
-  
-            <div class="property-group">
-              {@html formatText('Package hash', package_hash)}
+            <div class="tooltip plus">
+              <p><strong>{'Package hash'.toUpperCase()}<span class="far fa-question-circle">i</span></strong>
+                <span class="tooltiptext plus">A hash is a unique fingerprint created with a function using the web archive and metadata as input, that will change if even one byte of the original input is changed. Hashes are used to check if copies of an archive differ from the original.</span>: 
+                {package_hash.toUpperCase()}
+              </p>
             </div>
           </div>
         {/if}
@@ -136,26 +160,43 @@
         {#if parsed_json}
           <div class="pane">
 
-            <div class="property-group">
-              <!-- <p class="subheading"><em><strong><mark>Registration</mark></strong></em></p> -->
-              {@html formatText('ISCN on Likecoin - Transaction ID', iscn, "https://app.like.co/")}
-              {@html formatText('Numbers Protocol on Numbers - Transaction ID', numbers, "https://mainnet.num.network/overview")}
-              {@html formatText('Numbers Protocol on Avalance - Transaction ID', avalanche, "https://snowtrace.io/search?f=0&q="+avalanche)}
+            <div class="tooltip plus">
+              <p class="subheading"><em><strong><mark>Blockchain registration</mark></strong></em><span class="far fa-question-circle">i</span>
+                <span class="tooltiptext plus">Hashes of the web archives & metadata about the archive are registered on different blockchains to establish an immutable record of what was captured, and when.</span></p>
+              <!-- <div class="tooltip plus"> -->
+                <p><strong>{'ISCN on Likecoin'.toUpperCase()}
+                  <br>{'Transaction ID'.toUpperCase()}</strong>: <a href={"https://app.like.co/"}>{iscn.toUpperCase()}</a>
+                </p>
+              <!-- </div> -->
+              <!-- <div class="tooltip plus"> -->
+                <p><strong>{'Numbers Protocol on Numbers'.toUpperCase()}
+                  <br>{'Transaction ID'.toUpperCase()}</strong>: <a href={"https://mainnet.num.network/overview"}>{iscn.toUpperCase()}</a>
+                </p>
+              <!-- </div> -->
+              <!-- <div class="tooltip plus"> -->
+                <p><strong>{'Numbers Protocol on Avalanche'.toUpperCase()} 
+                  <br>{'Transaction ID'.toUpperCase()}</strong>: <a href={"https://snowtrace.io/search?f=0&q="+avalanche}>{avalanche.toUpperCase()}</a>
+                </p>
+              <!-- </div> -->
             </div>
 
-            <div class="property-group">
-              <!-- <p class="subheading"><strong>Storage and archiving</strong></p> -->
-              {@html formatText('IPFS - CID', ipfs, "https://ipfs.io/ipfs/"+ipfs)}
-              {@html formatText('Filecoin - Piece Content ID', filecoin, "https://filecoin.tools")}
-            </div>
-
-            <div class="property-group last-info">
-              <a href={"http://ipfs.io/ipfs/"+ipfs} class="button"><strong><mark>DOWNLOAD ARCHIVE</mark></strong></a>
+            <div class="tooltip plus">
+              <p class="subheading"><em><strong><mark>Storage and archiving</mark></strong></em><span class="far fa-question-circle">i</span>
+              <span class="tooltiptext plus">Copies of these web archives were stored in a resilient, peer-to-peer system (IPFS), and in a long term crypto-incentivized distributed storage system (Filecoin)</span></p>
+                <p><strong>{'IPFS'.toUpperCase()}
+                  <br>{'CID'.toUpperCase()}</strong>: <a href={"https://ipfs.io/ipfs/"+ipfs}>{ipfs.toUpperCase()}</a>
+                </p>
+                <p><strong>{'Filecoin'.toUpperCase()}
+                  <br>{'Piece Content ID'.toUpperCase()}</strong>: <a href={"https://filecoin.tools"}>{filecoin.toUpperCase()}</a>
+                </p>
+              <div class="last-info">
+                <a href={"http://ipfs.io/ipfs/"+ipfs} class="button"><strong><mark><img id="dl-button" src={downloadButton} alt="Download button"/>DOWNLOAD ARCHIVE</mark></strong></a>
+              </div>
             </div>
           </div>
         {/if}
       {/if}
-    
+      </div>
 
     
     </div>  
@@ -163,98 +204,23 @@
 
 <style>
 
-
   #wacz-popup {
-    height: calc(100% - 147px);
+    height: 100%;
     width: 100%;
     position: absolute;
     background-color: #fff;
   }
 
-  /* @media(max-width: 799px) { */
-    replay-web-page {
-      position: relative;
-      /* height: calc(); */
-      /* top: 152px; */
-      z-index: 1;
-    }
-
-    details {
-      position: relative;
-      margin-left: 3px;
-      width: 100%;
-      max-width: 400px;
-      /* padding: 4px 10px; */
-      /* border: 2px solid #8997C1; */
-    }
-    div.content { 
-      position: relative;
-      border: 2px solid #fff;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 400ms ease-out, border 0ms 400ms linear;
-    }
-
-    details[open] + div.content {
-      /* border: 2px solid #8997C1; */
-      max-height: 1200px; /* Set a max-height value enough to show all the content */        
-      transition: max-height 400ms ease-out, border 0ms linear;
-      padding-bottom: 20px;
-    }
-
-    details[open] span::before {
-        rotate: 90deg;
-        transition: rotate 200ms ease-out;
-    }
-  /* } */
-
-  /* @media(min-width: 800px) { */
-    /* replay-web-page {
-      position: absolute;
-      top: 80px;
-      width: 50%;
-    }
-
-    details {
-      position: absolute;
-
-      left: 50%;
-      width: calc(50% - 35px);
-    }
-    div.content {
-      position: absolute;
-      left: 50%;
-      top: 80px;
-      width: calc(50% - 10px);
-
-    }
-    .last-info {
-      margin-bottom: 10px;
-    } */
-  /* }  */
-
-
-  details {
-    /* max-width: 500px; */
-    overflow: hidden;
-    border-radius: 4px;
-    text-align: center;
-    font-size: clamp(1.13rem, calc(1.13rem + 0.00vw), 1.13rem);
-    cursor: pointer;
-    padding: 1em 12px;
-    background-color: #ffc61e;
+  #panes-container {
+    height: calc(100% - 147px);
   }
 
-  div.content {
-    margin: 1px;
-    /* width: 100%; */
-    border-radius: 4px;
-    box-sizing: border-box;
-    padding: 0 10px;
-    background-color: #fff;
-    overflow-wrap: break-word;
+  replay-web-page {
+    position: relative;
+    /* height: calc(); */
+    /* top: 152px; */
+    z-index: 1;
   }
-
 
   .info-title {
     font-size: 22px;
@@ -273,15 +239,29 @@
     font-size: 1.1em;
   }
 
+  strong {
+    font-weight: 700;
+  }
   mark {
+    /* font-size: 20px; */
     background-color: #ffc61e;
     padding-top: 2px;
   }
 
-  .lightbox-controls {
-    margin: 5px;
-    display: flex;
-    gap: .5rem;
+  @media (min-width:500px) {
+    .lightbox-controls {
+      margin: 5px;
+      display: flex;
+      gap: .5rem;
+    }
+  }
+  @media (max-width:499px) {
+    .lightbox-controls {
+      margin: 5px;
+    }
+    .lightbox-button {
+      margin-bottom: 6px;
+    }
   }
 
   .lightbox-button {
@@ -324,6 +304,65 @@
     margin: 40px;
     padding: 40px;
     overflow-wrap: break-word;
+  }
+
+  .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 250px;
+      background-color: #383838;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 10px 10px;
+      position: absolute;
+      z-index: 1;
+      bottom: 102%;
+      /* left: 50%; */
+      margin-left: -145px;
+      opacity: 0;
+      transition: opacity 0.3s;
+  }
+  .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #383838 transparent transparent transparent;
+  }
+
+  .tooltip {
+    position: relative;
+  }
+  .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+  }
+
+  .far {
+    display: inline-block;
+    line-height: 19px;
+    width: 19px;
+    /* margin-right: 5px; */
+    /* padding: 7px; */
+    border: solid 1px;
+    border-radius: 50%;
+    text-align: center;
+    margin-left: 5px;
+  }
+
+  #dl-button {
+    position: relative;
+    top: 10px;
+    height: 34px;
+    width: 34px;
+    margin-right: 5px;
+  }
+
+  .last-info {
+    font-size: 20px;
   }
   
 
