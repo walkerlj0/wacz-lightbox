@@ -98,9 +98,9 @@
       
       <!-- <button on:click={open}>View archive information</button> -->
       <div class="lightbox-controls">
-				<button on:click={() => visiblePane = 'replay-web'} data-btn="document" aria-controls="panes-container" class={"lightbox-button" + (visiblePane == 'replay-web' ? " selected" : " unselected")}>Document</button>
-				<button on:click={() => visiblePane = 'archive'} data-btn="archive" aria-controls="panes-container" class={"lightbox-button" + (visiblePane == 'archive' ? " selected" : " unselected")}>Archive</button>
-				<button on:click={() => visiblePane = 'registration'} data-btn="registration" aria-controls="panes-container" class={"lightbox-button" + (visiblePane == 'registration' ? " selected" : " unselected")}>Registration</button>
+				<button on:click={() => visiblePane = 'replay-web'} data-btn="document" aria-controls="panes-container" class={"btn lightbox-button" + (visiblePane == 'replay-web' ? " selected" : " unselected")}>Document</button>
+				<button on:click={() => visiblePane = 'archive'} data-btn="archive" aria-controls="panes-container" class={"btn lightbox-button" + (visiblePane == 'archive' ? " selected" : " unselected")}>Archive</button>
+				<button on:click={() => visiblePane = 'registration'} data-btn="registration" aria-controls="panes-container" class={"btn lightbox-button" + (visiblePane == 'registration' ? " selected" : " unselected")}>Registration</button>
 			</div>
 
       <div id="panes-container">
@@ -189,10 +189,9 @@
                 <p><strong>{'Filecoin'.toUpperCase()}
                   <br>{'Piece Content ID'.toUpperCase()}</strong>: <a href={"https://filecoin.tools"}>{filecoin.toUpperCase()}</a>
                 </p>
-              <div class="last-info">
-                <a href={"http://ipfs.io/ipfs/"+ipfs} class="button"><strong><mark><img id="dl-button" src={downloadButton} alt="Download button"/>DOWNLOAD ARCHIVE</mark></strong></a>
-              </div>
+                <br>
             </div>
+            <a href={"http://ipfs.io/ipfs/"+ipfs}><button class="btn dl-button"><img id="dl-button-img" src={downloadButton} alt="Download button"/>DOWNLOAD ARCHIVE</button></a>
           </div>
         {/if}
       {/if}
@@ -245,7 +244,6 @@
   mark {
     /* font-size: 20px; */
     background-color: #ffc61e;
-    padding-top: 2px;
   }
 
   @media (min-width:500px) {
@@ -265,11 +263,12 @@
   }
 
   .lightbox-button {
-    font-family: "Poppins",Helvetica,Arial,Lucida,sans-serif !important;
-    padding: 1.325em calc(1em + 12px);
     width: 100%;
-    color: #383838;
+    padding: 1.325em calc(1em + 12px);
     background: #fff;
+  }
+  .btn {
+    color: #383838;
     border-width: 1px;
     border-color: #383838;
     border-radius: 4px;
@@ -286,7 +285,7 @@
     border-width: 0;
   } 
 
-  .lightbox-button.unselected:hover {
+  .lightbox-button.unselected:hover, .dl-button:hover {
     color: #000 !important;
     letter-spacing: 2px !important;
     background-color: #bfbfbf;
@@ -353,16 +352,17 @@
     margin-left: 5px;
   }
 
-  #dl-button {
+  .dl-button {
+    padding: 0px 26px 20px 26px;
+    background: #ffc61e;
+  }
+
+  #dl-button-img {
     position: relative;
     top: 10px;
     height: 34px;
     width: 34px;
     margin-right: 5px;
-  }
-
-  .last-info {
-    font-size: 20px;
   }
   
 
