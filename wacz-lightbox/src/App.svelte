@@ -3,6 +3,7 @@
 
 <script>
 
+  import { Buffer } from 'buffer/';
   import downloadButton from './assets/download.svg';
   export let filename = 'mono-county-pdf-01-2023-08-25T15-57-33.wacz';
   // let visible = false;
@@ -18,7 +19,7 @@
   $: mobile = innerWidth < 800;
   let visiblePane = 'replay-web';
 
-  let url, archive_name, date_crawled, domain, domainCert,
+  let url, archive_name, date_crawled_formatted, domain, domainCert,
     package_hash, iscn, numbers, avalanche, ipfs, filecoin,
     page_name, sha256Hash;
   let parsed_json = false;
@@ -34,7 +35,10 @@
       page_name = json_content?.name;
       url = json_content?.private?.crawl_config?.config?.seeds[0]?.url;
       archive_name = json?.sourceId?.value;
-      date_crawled = json_content?.extras?.wacz?.dateCrawled;
+      let date_crawled = new Date(json_content?.extras?.wacz?.dateCrawled);
+      let formatter = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric',});
+      let date_parts = formatter.formatToParts(date_crawled);
+      date_crawled_formatted = (date_parts[2].value + ' ' + date_parts[0].value + ' ' + date_parts[4].value);
       domain = json_content?.validatedSignatures[0]?.custom?.domain;
       domainCert = json_content?.validatedSignatures[0]?.custom?.domainCert;
       package_hash = json_content?.validatedSignatures[0]?.custom?.hash;
@@ -42,13 +46,14 @@
       numbers = json?.registrationRecords?.numbersProtocol?.numbers?.txHash;
       avalanche = json?.registrationRecords?.numbersProtocol?.avalanche?.txHash;
       ipfs = json?.content?.cid;
-      filecoin = "Will come later";
-      hash(domainCert).then(hash => sha256Hash = hash);
-
+      filecoin = "baga6ea4seaqflgunguw3rpwzdf47wzb4m6664pnj2732cddj4uh45x4xg5kuoma";
+      hash(domainCert).then(h => sha256Hash = h);
+      console.log(sha256Hash);
       console.log('PARSED JSON');
       console.log(archive_name);
       parsed_json = true;
   }
+  $: console.log(sha256Hash)
   import_json();
   // import data from json_filename;
   // let json_filename = '/assets/'+filename+'.json';
@@ -61,18 +66,19 @@
   // $: if (json_content) {
   // } 
  async function hash(data) {
-  console.log(data.split("-----BEGIN CERTIFICATE-----")[1].split("-----END CERTIFICATE-----")[0].replaceAll(/\s/g, ''));
+  console.log(data);
     data = data.split("-----BEGIN CERTIFICATE-----")[1].split("-----END CERTIFICATE-----")[0].replaceAll(/\s/g, '');
     // data = data.replaceAll("-----BEGIN CERTIFICATE-----","").replaceAll("-----END CERTIFICATE-----","").replaceAll(/\s/g, '').replaceAll("=", "");
     console.log(data);
-    data = atob(data);
+    const buffer = Buffer.from(data, 'base64');
+    console.log(data);
 
     // Convert the binary data to an ArrayBuffer
-    const buffer = new ArrayBuffer(data.length);
-    const view = new Uint8Array(buffer);
-    for (let i = 0; i < data.length; i++) {
-      view[i] = data.charCodeAt(i);
-    }
+    // const buffer = new ArrayBuffer(data.length);
+    // const view = new Uint8Array(buffer);
+    // for (let i = 0; i < data.length; i++) {
+    //   view[i] = data.charCodeAt(i);
+    // }
 
     // Create a SHA-256 hash of the binary data
     const sha256Hash = crypto.subtle.digest('SHA-256', buffer).then(hashBuffer => {
@@ -88,6 +94,10 @@
 
   function formatText(heading, content, link) {
     return "<p><strong>"+heading.toUpperCase()+ ":</strong> " + (link ? "<a href="+link+">" : "") + content.toUpperCase() + (link ? "</a>" : "") + "</p>"
+  }
+
+  function upperCase(text) {
+    return text == undefined ? "ERROR IN FIELD" : text.toUpperCase()
   }
 
 </script>
@@ -120,38 +130,34 @@
         {#if parsed_json}
           <div class="pane">
             <div class="tooltip plus">
-                <p><strong>{'Archive name'.toUpperCase()}</strong>: 
-                  {archive_name.toUpperCase()}
+                <p><strong>{upperCase('Archive name')}</strong>: 
+                  {upperCase(archive_name)}
                 </p>
             </div>
             <div class="tooltip plus">
-              <p><strong>{'Original URL'.toUpperCase()}<span class="far fa-question-circle">i</span></strong>
+              <p><strong>{upperCase('Original URL')}<span class="far fa-question-circle">i</span></strong>
                 <span class="tooltiptext plus">The original link these webpages were archived from</span>: 
-                <a href={url}>{url.toUpperCase()}</a>
+                <a href={url}>{upperCase(url)}</a>
               </p>
             </div>
             <div class="tooltip plus">
-              <p><strong>{'Archived on'.toUpperCase()}<span class="far fa-question-circle">i</span></strong>
+              <p><strong>{upperCase('Archived on')}<span class="far fa-question-circle">i</span></strong>
                 <span class="tooltiptext plus">The date and time that the website archive was captured</span>: 
-                {date_crawled.toUpperCase()}
+                {upperCase(date_crawled_formatted)}
               </p>
             </div>  
             <div class="tooltip plus">
-              <p><strong>{'Observed by'.toUpperCase()}<span class="far fa-question-circle">i</span></strong>
+              <p><strong>{upperCase('Observed by')}<span class="far fa-question-circle">i</span></strong>
                 <span class="tooltiptext plus">The notary, signed with a cryptographic certificate to establish a witness</span>: 
-                {domain.toUpperCase()}
+                {upperCase(domain)}
+                <br>
+                <a href={'https://crt.sh/?q='+sha256Hash}>{upperCase('View certificate')}</a>
               </p>
             </div>
             <div class="tooltip plus">
-              <p><strong>{'View certificate'.toUpperCase()}<span class="far fa-question-circle">i</span></strong>
-                <span class="tooltiptext plus">Remove this?</span>: 
-                <a href={'https://crt.sh/?='+sha256Hash}>{sha256Hash.toUpperCase()}</a>
-              </p>
-            </div>
-            <div class="tooltip plus">
-              <p><strong>{'Package hash'.toUpperCase()}<span class="far fa-question-circle">i</span></strong>
+              <p><strong>{upperCase('Package hash')}<span class="far fa-question-circle">i</span></strong>
                 <span class="tooltiptext plus">A hash is a unique fingerprint created with a function using the web archive and metadata as input, that will change if even one byte of the original input is changed. Hashes are used to check if copies of an archive differ from the original.</span>: 
-                {package_hash.toUpperCase()}
+                {upperCase(package_hash)}
               </p>
             </div>
           </div>
@@ -161,33 +167,33 @@
           <div class="pane">
 
             <div class="tooltip plus">
-              <p class="subheading"><em><strong><mark>Blockchain registration</mark></strong></em><span class="far fa-question-circle">i</span>
+              <p class="subheading"><strong>BLOCKCHAIN REGISTRATION</strong><span class="far fa-question-circle">i</span>
                 <span class="tooltiptext plus">Hashes of the web archives & metadata about the archive are registered on different blockchains to establish an immutable record of what was captured, and when.</span></p>
               <!-- <div class="tooltip plus"> -->
-                <p><strong>{'ISCN on Likecoin'.toUpperCase()}
-                  <br>{'Transaction ID'.toUpperCase()}</strong>: <a href={"https://app.like.co/"}>{iscn.toUpperCase()}</a>
+                <p><strong>{upperCase('ISCN on Likecoin')}
+                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://app.like.co/"}>{upperCase(iscn)}</a>
                 </p>
               <!-- </div> -->
               <!-- <div class="tooltip plus"> -->
-                <p><strong>{'Numbers Protocol on Numbers'.toUpperCase()}
-                  <br>{'Transaction ID'.toUpperCase()}</strong>: <a href={"https://mainnet.num.network/overview"}>{iscn.toUpperCase()}</a>
+                <p><strong>{upperCase('Numbers Protocol on Numbers')}
+                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://mainnet.num.network/overview"}>{upperCase(iscn)}</a>
                 </p>
               <!-- </div> -->
               <!-- <div class="tooltip plus"> -->
-                <p><strong>{'Numbers Protocol on Avalanche'.toUpperCase()} 
-                  <br>{'Transaction ID'.toUpperCase()}</strong>: <a href={"https://snowtrace.io/search?f=0&q="+avalanche}>{avalanche.toUpperCase()}</a>
+                <p><strong>{upperCase('Numbers Protocol on Avalanche')} 
+                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://snowtrace.io/search?f=0&q="+avalanche}>{upperCase(avalanche)}</a>
                 </p>
               <!-- </div> -->
             </div>
 
             <div class="tooltip plus">
-              <p class="subheading"><em><strong><mark>Storage and archiving</mark></strong></em><span class="far fa-question-circle">i</span>
+              <p class="subheading"><strong>STORAGE AND ARCHIVING</strong><span class="far fa-question-circle">i</span>
               <span class="tooltiptext plus">Copies of these web archives were stored in a resilient, peer-to-peer system (IPFS), and in a long term crypto-incentivized distributed storage system (Filecoin)</span></p>
-                <p><strong>{'IPFS'.toUpperCase()}
-                  <br>{'CID'.toUpperCase()}</strong>: <a href={"https://ipfs.io/ipfs/"+ipfs}>{ipfs.toUpperCase()}</a>
+                <p><strong>{'IPFS'}
+                  <br>{'CID'}</strong>: <a href={"https://replayweb.page/?source=https://w3s.link/ipfs/"+ipfs}>{upperCase(ipfs)}</a>
                 </p>
-                <p><strong>{'Filecoin'.toUpperCase()}
-                  <br>{'Piece Content ID'.toUpperCase()}</strong>: <a href={"https://filecoin.tools"}>{filecoin.toUpperCase()}</a>
+                <p><strong>{upperCase('Filecoin')}
+                  <br>{upperCase('Piece Content ID')}</strong>: <a href={"https://filecoin.tools/"+filecoin}>{upperCase(filecoin)}</a>
                 </p>
                 <br>
             </div>
@@ -206,8 +212,8 @@
   #wacz-popup {
     height: 100%;
     width: 100%;
-    position: absolute;
-    background-color: #fff;
+    /* position: absolute; */
+    /* background-color: #fff; */
   }
 
   #panes-container {
@@ -246,16 +252,19 @@
     background-color: #ffc61e;
   }
 
-  @media (min-width:500px) {
-    .lightbox-controls {
-      margin: 5px;
+  .lightbox-controls {
+      margin: 5px 0px;
       display: flex;
       gap: .5rem;
+  }
+
+  @media (min-width:650px) {
+    .lightbox-controls {
     }
   }
-  @media (max-width:499px) {
+  @media (max-width:649px) {
     .lightbox-controls {
-      margin: 5px;
+      flex-direction: column;
     }
     .lightbox-button {
       margin-bottom: 6px;
@@ -263,14 +272,15 @@
   }
 
   .lightbox-button {
+    color: #383838;
+    border-color: #383838;
     width: 100%;
     padding: 1.325em calc(1em + 12px);
     background: #fff;
   }
   .btn {
-    color: #383838;
     border-width: 1px;
-    border-color: #383838;
+    border-style: solid;
     border-radius: 4px;
     font-size: 14px;
     font-weight: 700;
@@ -283,6 +293,8 @@
   .lightbox-button.selected {
     background: #ffc61e;
     border-width: 0;
+    border-color: #ffc61e;
+    border-style: solid;
   } 
 
   .lightbox-button.unselected:hover, .dl-button:hover {
@@ -292,6 +304,7 @@
     /* background-image: initial; */
     border-color: #bfbfbf !important;
     border-radius: 0 !important;
+    border-style: solid;
   }
 
   :global(a) {
@@ -355,6 +368,7 @@
   .dl-button {
     padding: 0px 26px 20px 26px;
     background: #ffc61e;
+    border-color: #ffc61e;
   }
 
   #dl-button-img {
