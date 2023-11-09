@@ -16,7 +16,7 @@
 
   let innerWidth = 0;
   let mobile = true;
-  $: mobile = innerWidth < 800;
+  $: mobile = innerWidth < 650;
   let visiblePane = 'replay-web';
 
   let url, archive_name, date_crawled_formatted, domain, domainCert,
@@ -104,7 +104,9 @@
 
     <div id="wacz-popup">
   
-      <p class='info-title'>{page_name}</p>
+      {#if !mobile}
+        <p class='info-title'>{page_name}</p>
+      {/if}
       
       <!-- <button on:click={open}>View archive information</button> -->
       <div class="lightbox-controls">
@@ -312,9 +314,9 @@
   }
 
   .pane {
-    box-shadow: 1px 4px 48px rgba(0,0,0,.075);
-    margin: 40px;
-    padding: 40px;
+    /* box-shadow: 1px 4px 48px rgba(0,0,0,.075); */
+    /* margin: 40px; */
+    /* padding: 40px; */
     overflow-wrap: break-word;
   }
 
@@ -323,7 +325,7 @@
       width: 250px;
       background-color: #383838;
       color: #fff;
-      text-align: center;
+      text-align: left;
       border-radius: 6px;
       padding: 10px 10px;
       position: absolute;
