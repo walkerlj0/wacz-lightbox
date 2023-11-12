@@ -25,9 +25,12 @@
   let parsed_json = false;
 
   async function import_json() {
+      console.log('Load json files');
       let response_content = await fetch(path+filename+'.content.json');
       let response_json_content = await response_content.json();
-      const json_content = response_json_content['contentMetadata']
+      console.log(response_content);
+      console.log(response_json_content);
+      const json_content = response_json_content['contentMetadata'];
       
       let response = await fetch(path + filename + '.json');
       const json = await response.json();
