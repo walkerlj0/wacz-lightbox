@@ -1,0 +1,54 @@
+{
+  "contentMetadata": {
+    "name": "WebArchive crawled on 2023-10-31",
+    "mime": "application/wacz",
+    "description": "Authenticated web archive of [ https://www.contracosta.ca.gov/AgendaCenter/ViewFile/Agenda/_09052018-1717, https://www.contracosta.ca.gov/AgendaCenter/ViewFile/Agenda/_06062018-1641, https://www.contracosta.ca.gov/AgendaCenter/ViewFile/Agenda/_03072018-1551] captured locally on 2023-10-31",
+    "author": {
+      "@type": "Organization",
+      "identifier": "https://mappingblackca.com",
+      "name": "MBC"
+    },
+    "extras": {
+      "wacz": {
+        "localsignSoftware": "Webrecorder ArchiveWeb.page 0.11.3, using warcio.js 2.2.0",
+        "localsignPublicKey": "MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEk2ClNJP5sSdiJzYlBMfEKsheagCurKuqp/JCB7hsFI/INbAlvQ1O7l3mCPIMYCvim63bDmMf/dRIOvKAjjWDoQ6RMEuMPtIyEwb2WIVU8tzlwZT5r15/QS4s4uyy9iD8",
+        "localsignSignature": "/kYoovcNpwIm0S9Ip/Go9uWGK2Ddi8hYCrOECXPbhvzfcz+wjAxc79OXQtB1/Y0diCQESBvj0BJFLZkwMhSkfkJyV4KVOlU36iKXzaCjZIyDaZ24OK9KRJ8gnwV2zu2L",
+        "waczVersion": "1.1.1",
+        "software": "Webrecorder ArchiveWeb.page 0.11.3, using warcio.js 2.2.0",
+        "dateCrawled": "2023-10-31T01:02:51.584Z",
+        "userAgentCrawled": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+        "waczTitle": "contracosta-county-web-03",
+        "pages": {
+          "55yt8o9hrki5a146tls59p": "https://www.contracosta.ca.gov/AgendaCenter/ViewFile/Agenda/_09052018-1717",
+          "61aqpd23jn3ly7v2na4g0p": "https://www.contracosta.ca.gov/AgendaCenter/ViewFile/Agenda/_06062018-1641",
+          "78glpdh01cohivd6f3k4fq": "https://www.contracosta.ca.gov/AgendaCenter/ViewFile/Agenda/_03072018-1551",
+          "96atl3m1j2twacb0ftg55d": "https://www.contracosta.ca.gov/AgendaCenter/ViewFile/Agenda/_05162018-1640",
+          "abjodmla03ey5j2p3k3k": "https://www.contracosta.ca.gov/AgendaCenter/ViewFile/Agenda/_01032018-1483",
+          "es594qaqwwbbb0rkf8sjo": "https://www.contracosta.ca.gov/AgendaCenter/ViewFile/Agenda/_10092018-1749",
+          "r70nvjegipb0rti43cxkj": "https://www.contracosta.ca.gov/AgendaCenter/ViewFile/Agenda/_02142018-1530",
+          "r9v0vvi0hhp1iu4tirua9": "https://www.contracosta.ca.gov/AgendaCenter/Racial-Justice-Task-Force-146",
+          "rpg9yo5qirlxe6t5323itj": "https://www.contracosta.ca.gov/AgendaCenter/ViewFile/Agenda/_04042018-1588",
+          "wkztt4hrqegqe9vnmb6yed": "https://www.contracosta.ca.gov/AgendaCenter/ViewFile/Agenda/_11142018-1816"
+        }
+      }
+    },
+    "private": {
+      "folder": {
+        "uploadFilename": "contracosta-county-web-03.wacz",
+        "uploadDirectory": "/mnt/integrity_store/store/rclone/sync/shared-input/mapping-black-california/rphc-manual-crawl/input"
+      }
+    },
+    "timestamp": "2023-10-31T01:05:52.874813Z",
+    "dateCreated": "2023-10-31T01:05:22Z",
+    "validatedSignatures": [
+      {
+        "provider": "Webrecorder ArchiveWeb.page 0.11.3, using warcio.js 2.2.0",
+        "algorithm": "ecdsa-key-sig",
+        "publicKey": "MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEk2ClNJP5sSdiJzYlBMfEKsheagCurKuqp/JCB7hsFI/INbAlvQ1O7l3mCPIMYCvim63bDmMf/dRIOvKAjjWDoQ6RMEuMPtIyEwb2WIVU8tzlwZT5r15/QS4s4uyy9iD8",
+        "signature": "/kYoovcNpwIm0S9Ip/Go9uWGK2Ddi8hYCrOECXPbhvzfcz+wjAxc79OXQtB1/Y0diCQESBvj0BJFLZkwMhSkfkJyV4KVOlU36iKXzaCjZIyDaZ24OK9KRJ8gnwV2zu2L",
+        "authenticatedMessage": "sha256:f2c9ce175a582d4b482470359ecb3d9aa298d315dc8b4d6647a807f4c3ab2fd9",
+        "authenticatedMessageDescription": "The hash of datapackage.json in the WACZ file"
+      }
+    ]
+  }
+}

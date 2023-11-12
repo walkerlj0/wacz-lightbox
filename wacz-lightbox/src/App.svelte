@@ -33,7 +33,11 @@
       const json = await response.json();
 
       page_name = json_content?.name;
-      url = json_content?.private?.crawl_config?.config?.seeds[0]?.url;
+      if (json_content?.private?.crawl_config?.config?.seeds) {
+        url = json_content?.private?.crawl_config?.config?.seeds[0]?.url;
+      } else {
+        url = json_content?.private?.crawl_config?.firstSeed?.url;
+      }
       archive_name = json?.sourceId?.value;
       let date_crawled = new Date(json_content?.extras?.wacz?.dateCrawled);
       let formatter = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric',});
