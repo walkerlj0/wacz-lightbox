@@ -40,7 +40,7 @@
       if (json_content?.private?.crawl_config?.config?.seeds) {
         url = json_content?.private?.crawl_config?.config?.seeds[0]?.url;
       } else {
-        url = json_content?.private?.crawl_config?.firstSeed?.url;
+        url = json_content?.private?.crawl_config?.firstSeed;
       }
       if (json?.sourceId?.value) {
         archive_name = json?.sourceId?.value;
