@@ -28,12 +28,13 @@
       console.log('Load json files');
       let response_content = await fetch(path+filename+'.content.json');
       let response_json_content = await response_content.json();
-      console.log(response_content);
-      console.log(response_json_content);
       const json_content = response_json_content['contentMetadata'];
       
       let response = await fetch(path + filename + '.json');
       const json = await response.json();
+
+      console.log(json);
+      console.log(json_content);
 
       page_name = json_content?.name;
       if (json_content?.private?.crawl_config?.config?.seeds) {
@@ -41,7 +42,11 @@
       } else {
         url = json_content?.private?.crawl_config?.firstSeed?.url;
       }
-      archive_name = json?.sourceId?.value;
+      if (json?.sourceId?.value) {
+        archive_name = json?.sourceId?.value;
+      } else {
+        archive_name = response_json_content?.sourceId?.value;
+      };
       let date_crawled = new Date(json_content?.extras?.wacz?.dateCrawled);
       let formatter = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric',});
       let date_parts = formatter.formatToParts(date_crawled);
@@ -73,12 +78,9 @@
   // $: if (json_content) {
   // } 
  async function hash(data) {
-  console.log(data);
     data = data.split("-----BEGIN CERTIFICATE-----")[1].split("-----END CERTIFICATE-----")[0].replaceAll(/\s/g, '');
     // data = data.replaceAll("-----BEGIN CERTIFICATE-----","").replaceAll("-----END CERTIFICATE-----","").replaceAll(/\s/g, '').replaceAll("=", "");
-    console.log(data);
     const buffer = Buffer.from(data, 'base64');
-    console.log(data);
 
     // Convert the binary data to an ArrayBuffer
     // const buffer = new ArrayBuffer(data.length);
@@ -219,6 +221,7 @@
 <style>
 
   #wacz-popup {
+    min-height:800px;
     height: 100%;
     width: 100%;
     /* position: absolute; */

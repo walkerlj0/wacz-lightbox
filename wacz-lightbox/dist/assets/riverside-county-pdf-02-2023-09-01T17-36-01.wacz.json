@@ -1,0 +1,40 @@
+{
+  "inputBundle": {
+    "sha256": "399146b5475667ab002577014092994412a99a9e9ccdc4a27b8c802db15c472e"
+  },
+  "content": {
+    "sha256": "bf415eb7beb2184fd8717ed41b958d1c64c23829237c8e167104f0365b304156",
+    "md5": "62f931a342db5f9c6508f57523e78fa3",
+    "cid": "bafkreif7ifplppvsdbh5q4l62qnzldi4mtbdqkjdpshbm4ie6a3fwmcbky"
+  },
+  "archive": {
+    "sha256": "d02811c64edb6a7e754dc01f55d6bc46225c0259a60c6d9dc95cc66ffc04d604",
+    "md5": "68b9633ecb379ce4c75a713553a9e427",
+    "cid": "bafkreigqfai4mtw3nj7hktoad5k5npcgejoaewngbrwz3sk4yzx7ybgwaq"
+  },
+  "archiveEncrypted": {
+    "sha256": "186a4205629c6ec0b4d4ca495d0e45bcaf80a0491145424085f576980019ce3e",
+    "md5": "e87419076480af25d0f07724ac19eb6b",
+    "cid": "bafkreiaynjbakyu4n3aljvgkjfoq4rn4v6akasirivbebbpvo2maagoohy"
+  },
+  "registrationRecords": {
+    "iscn": {
+      "txHash": "BD763687390401ED690391EB80B6561549329D74AEA309025F72D37EC2FC4B20",
+      "iscnId": "iscn://likecoin-chain/By7eL2Ms8vTp6E_4NDcYOIcSOQu8E7UJKzb-tYR9wvI/1"
+    },
+    "numbersProtocol": {
+      "numbers": {
+        "txHash": "0x24a5886df9047a35cf0d5a9db328d5ef8afe4386767f9eb38e7517defd562fe8",
+        "assetCid": "bafkreiaynjbakyu4n3aljvgkjfoq4rn4v6akasirivbebbpvo2maagoohy",
+        "assetTreeCid": "bafkreiflrfwno6pazcye6lfw5ftacvyamkz24kk7lk4eswblcnjw24oara",
+        "order_id": "44d8260b-c04d-488a-98c6-a3973f4e5978"
+      },
+      "avalanche": {
+        "txHash": "0x45ca0d96cae44b5f2a18b72dc410e0229bc3762c274b1797db83696ad1ed32fa",
+        "assetCid": "bafkreiaynjbakyu4n3aljvgkjfoq4rn4v6akasirivbebbpvo2maagoohy",
+        "assetTreeCid": "bafkreiflrfwno6pazcye6lfw5ftacvyamkz24kk7lk4eswblcnjw24oara",
+        "order_id": "04c1e823-6fee-4d56-80ae-0ee6d8da9256"
+      }
+    }
+  }
+}
