@@ -15,8 +15,8 @@
   // let json;
 
   let innerWidth = 0;
-  let mobile = true;
-  $: mobile = innerWidth < 650;
+  // let mobile = true;
+  // $: mobile = innerWidth < 650;
   let visiblePane = 'replay-web';
 
   let url, archive_name, date_crawled_formatted, domain, domainCert,
@@ -25,7 +25,7 @@
   let parsed_json = false;
 
   async function import_json() {
-      console.log('Load json files');
+      // console.log('Load json files');
       let response_content = await fetch(path+filename+'.content.json', {mode: 'cors', cache: 'no-store' });
       let response_json_content = await response_content.json();
       const json_content = response_json_content['contentMetadata'];
@@ -33,8 +33,8 @@
       let response = await fetch(path + filename + '.json', {mode: 'cors', cache: 'no-store' });
       const json = await response.json();
 
-      console.log(json);
-      console.log(json_content);
+      // console.log(json);
+      // console.log(json_content);
 
       page_name = json_content?.name;
       if (json_content?.private?.crawl_config?.config?.seeds) {
@@ -60,10 +60,9 @@
       ipfs = json?.content?.cid;
       filecoin = "baga6ea4seaqflgunguw3rpwzdf47wzb4m6664pnj2732cddj4uh45x4xg5kuoma";
       hash(domainCert).then(h => sha256Hash = h);
-      console.log('parsed json');
+      // console.log('parsed json');
       parsed_json = true;
   }
-  $: console.log(sha256Hash)
   import_json();
   // import data from json_filename;
   // let json_filename = '/assets/'+filename+'.json';
@@ -118,7 +117,8 @@
 
     <div id="wacz-popup">
   
-      {#if !mobile}
+      <!-- {#if !mobile} -->
+      {#if false}
         <p class='info-title'>{page_name}</p>
       {/if}
       
@@ -130,8 +130,8 @@
 			</div>
 
       <div id="panes-container">
-      {#if visiblePane == 'replay-web'}
         <replay-web-page
+          class={visiblePane == 'replay-web' ? "" : "no-display"}
           id="embed" 
           source={path + filename} 
           embed="replayonly" 
@@ -140,8 +140,9 @@
           >
         </replay-web-page>
 
-        <!-- <a href={link}>{content.toUpperCase()}</a> -->
 
+      {#if visiblePane == 'replay-web'}
+        <!-- <div></div> -->
       {:else if visiblePane == 'archive'}
         {#if parsed_json}
           <div class="pane">
@@ -153,7 +154,7 @@
             <div class="tooltip plus">
               <p><strong>{upperCase('Original URL')}<span class="far fa-question-circle">i</span></strong>
                 <span class="tooltiptext plus">The original link these webpages were archived from</span>: 
-                <a href={url}>{upperCase(url)}</a>
+                <a href={url} target="_blank" rel="noopener noreferrer">{upperCase(url)}</a>
               </p>
             </div>
             <div class="tooltip plus">
@@ -167,7 +168,7 @@
                 <span class="tooltiptext plus">The notary, signed with a cryptographic certificate to establish a witness</span>: 
                 {upperCase(domain)}
                 <br>
-                <a href={'https://crt.sh/?q='+sha256Hash}>{upperCase('View certificate')}</a>
+                <a href={'https://crt.sh/?q='+sha256Hash} target="_blank" rel="noopener noreferrer">{upperCase('View certificate')}</a>
               </p>
             </div>
             <div class="tooltip plus">
@@ -187,17 +188,17 @@
                 <span class="tooltiptext plus">Hashes of the web archives & metadata about the archive are registered on different blockchains to establish an immutable record of what was captured, and when.</span></p>
               <!-- <div class="tooltip plus"> -->
                 <p><strong>{upperCase('ISCN on Likecoin')}
-                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://app.like.co/"}>{upperCase(iscn)}</a>
+                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://app.like.co/"} target="_blank" rel="noopener noreferrer">{upperCase(iscn)}</a>
                 </p>
               <!-- </div> -->
               <!-- <div class="tooltip plus"> -->
                 <p><strong>{upperCase('Numbers Protocol on Numbers')}
-                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://mainnet.num.network/overview"}>{upperCase(iscn)}</a>
+                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://mainnet.num.network/overview"} target="_blank" rel="noopener noreferrer">{upperCase(iscn)}</a>
                 </p>
               <!-- </div> -->
               <!-- <div class="tooltip plus"> -->
                 <p><strong>{upperCase('Numbers Protocol on Avalanche')} 
-                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://snowtrace.io/search?f=0&q="+avalanche}>{upperCase(avalanche)}</a>
+                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://snowtrace.io/search?f=0&q="+avalanche} target="_blank" rel="noopener noreferrer">{upperCase(avalanche)}</a>
                 </p>
               <!-- </div> -->
             </div>
@@ -206,14 +207,16 @@
               <p class="subheading"><strong>STORAGE AND ARCHIVING</strong><span class="far fa-question-circle">i</span>
               <span class="tooltiptext plus">Copies of these web archives were stored in a resilient, peer-to-peer system (IPFS), and in a long term crypto-incentivized distributed storage system (Filecoin)</span></p>
                 <p><strong>{'IPFS'}
-                  <br>{'CID'}</strong>: <a href={"https://replayweb.page/?source=https://w3s.link/ipfs/"+ipfs}>{upperCase(ipfs)}</a>
+                  <br>{'CID'}</strong>: <a href={"https://replayweb.page/?source=https://w3s.link/ipfs/"+ipfs} target="_blank" rel="noopener noreferrer">{upperCase(ipfs)}</a>
                 </p>
                 <p><strong>{upperCase('Filecoin')}
-                  <br>{upperCase('Piece Content ID')}</strong>: <a href={"https://filecoin.tools/"+filecoin}>{upperCase(filecoin)}</a>
+                  <br>{upperCase('Piece Content ID')}</strong>: <a href={"https://filecoin.tools/"+filecoin} target="_blank" rel="noopener noreferrer">{upperCase(filecoin)}</a>
                 </p>
                 <br>
             </div>
-            <a href={"http://ipfs.io/ipfs/"+ipfs}><button class="btn dl-button"><img id="dl-button-img" src={downloadButton} alt="Download button"/>DOWNLOAD ARCHIVE</button></a>
+            <a href={"http://ipfs.io/ipfs/"+ipfs}><button class="btn dl-button">
+              <!-- <img id="dl-button-img" src={downloadButton} alt="Download button"/> -->
+              DOWNLOAD ARCHIVE</button></a>
           </div>
         {/if}
       {/if}
@@ -226,7 +229,7 @@
 <style>
 
   #wacz-popup {
-    min-height:800px;
+    /* min-height:800px; */
     height: 100%;
     width: 100%;
     /* position: absolute; */
@@ -234,7 +237,7 @@
   }
 
   #panes-container {
-    height: calc(100% - 147px);
+    height: calc(100% - 56px);
   }
 
   replay-web-page {
@@ -266,7 +269,7 @@
   }
   mark {
     /* font-size: 20px; */
-    background-color: #ffc61e;
+    background-color: #4E617F;
   }
 
   .lightbox-controls {
@@ -296,6 +299,7 @@
     background: #fff;
   }
   .btn {
+    padding: 1.325em calc(1em + 12px);
     border-width: 1px;
     border-style: solid;
     border-radius: 4px;
@@ -308,10 +312,11 @@
     transition: color 300ms ease,background-color 300ms ease,border 300ms ease,border-radius 300ms ease,letter-spacing 300ms ease;
   }
   .lightbox-button.selected {
-    background: #ffc61e;
+    background: #4E617F;
     border-width: 0;
-    border-color: #ffc61e;
+    border-color: #4E617F;
     border-style: solid;
+    color: #fff;
   } 
 
   .lightbox-button.unselected:hover, .dl-button:hover {
@@ -333,6 +338,10 @@
     /* margin: 40px; */
     /* padding: 40px; */
     overflow-wrap: break-word;
+  }
+
+  .no-display {
+    display: none;
   }
 
   .tooltip .tooltiptext {
@@ -383,9 +392,10 @@
   }
 
   .dl-button {
-    padding: 0px 26px 20px 26px;
-    background: #ffc61e;
-    border-color: #ffc61e;
+    /* padding: 0px 26px 20px 26px; */
+    background: #4E617F;
+    border-color: #4E617F;
+    color: #fff;
   }
 
   #dl-button-img {
