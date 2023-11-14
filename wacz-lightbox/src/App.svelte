@@ -38,10 +38,8 @@
 
       page_name = json_content?.name;
       if (json_content?.private?.crawl_config?.config?.seeds) {
-        console.log('if')
         url = json_content?.private?.crawl_config?.config?.seeds[0]?.url;
       } else {
-        console.log('else')
         url = json_content?.private?.crawl_config?.firstSeed;
       }
       if (json?.sourceId?.value) {
@@ -62,9 +60,7 @@
       ipfs = json?.content?.cid;
       filecoin = "baga6ea4seaqflgunguw3rpwzdf47wzb4m6664pnj2732cddj4uh45x4xg5kuoma";
       hash(domainCert).then(h => sha256Hash = h);
-      console.log(sha256Hash);
-      console.log('PARSED JSON');
-      console.log(archive_name);
+      console.log('parsed json');
       parsed_json = true;
   }
   $: console.log(sha256Hash)
@@ -112,9 +108,11 @@
   }
 
   // when the filename changes, reload data 
-  $: filename,
+  $: {
+    filename;
     parsed_json = false;
     import_json();
+  }
 
 </script>
 
