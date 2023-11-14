@@ -26,11 +26,11 @@
 
   async function import_json() {
       console.log('Load json files');
-      let response_content = await fetch(path+filename+'.content.json');
+      let response_content = await fetch(path+filename+'.content.json', {mode: 'cors', cache: 'no-store' });
       let response_json_content = await response_content.json();
       const json_content = response_json_content['contentMetadata'];
       
-      let response = await fetch(path + filename + '.json');
+      let response = await fetch(path + filename + '.json', {mode: 'cors', cache: 'no-store' });
       const json = await response.json();
 
       console.log(json);
@@ -38,8 +38,10 @@
 
       page_name = json_content?.name;
       if (json_content?.private?.crawl_config?.config?.seeds) {
+        console.log('if')
         url = json_content?.private?.crawl_config?.config?.seeds[0]?.url;
       } else {
+        console.log('else')
         url = json_content?.private?.crawl_config?.firstSeed;
       }
       if (json?.sourceId?.value) {
@@ -108,6 +110,11 @@
   function upperCase(text) {
     return text == undefined ? "ERROR IN FIELD" : text.toUpperCase()
   }
+
+  // when the filename changes, reload data 
+  $: filename,
+    parsed_json = false;
+    import_json();
 
 </script>
 
