@@ -207,7 +207,7 @@
               <p class="subheading"><strong>STORAGE AND ARCHIVING</strong><span class="far fa-question-circle">i</span>
               <span class="tooltiptext plus">Copies of these web archives were stored in a resilient, peer-to-peer system (IPFS), and in a long term crypto-incentivized distributed storage system (Filecoin)</span></p>
                 <p><strong>{'IPFS'}
-                  <br>{'CID'}</strong>: <a href={"https://replayweb.page/?source=https://w3s.link/ipfs/"+ipfs} target="_blank" rel="noopener noreferrer">{upperCase(ipfs)}</a>
+                  <br>{'CID'}</strong>: <a href={"https://replayweb.page/?source=https://ipfs.io/ipfs/"+ipfs} target="_blank" rel="noopener noreferrer">{upperCase(ipfs)}</a>
                 </p>
                 <p><strong>{upperCase('Filecoin')}
                   <br>{upperCase('Piece Content ID')}</strong>: <a href={"https://filecoin.tools/"+filecoin} target="_blank" rel="noopener noreferrer">{upperCase(filecoin)}</a>
@@ -237,7 +237,7 @@
   }
 
   #panes-container {
-    height: calc(100% - 56px);
+    height: calc(50vh - 56px);
   }
 
   replay-web-page {
@@ -338,6 +338,9 @@
     /* margin: 40px; */
     /* padding: 40px; */
     overflow-wrap: break-word;
+    height: calc(50vh - 56px);
+    display: block;
+    overflow: auto;
   }
 
   .no-display {
