@@ -237,7 +237,7 @@
   }
 
   #panes-container {
-    height: calc(50vh - 56px);
+    height: calc(50vh - 80px);
   }
 
   replay-web-page {
