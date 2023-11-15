@@ -1,0 +1,49 @@
+{
+    "contentMetadata": {
+        "name": "WebArchive crawled on 2023-10-27",
+        "mime": "application/wacz",
+        "description": "Authenticated web archive of [ https://www.facebook.com/cummingsforsupervisor/posts/pfbid0fmfF1UGGsv4te1pZiLp6gPsnepX36yMTAKkRqKaAXcKst62SYP4kzhYyNpyp5T8el] captured locally on 2023-10-27",
+        "author": {
+            "@type": "Organization",
+            "identifier": "https://mappingblackca.com",
+            "name": "MBC"
+        },
+        "extras": {
+            "wacz": {
+                "localsignSoftware": "Webrecorder ArchiveWeb.page 0.11.3, using warcio.js 2.2.0",
+                "localsignPublicKey": "MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEk2ClNJP5sSdiJzYlBMfEKsheagCurKuqp/JCB7hsFI/INbAlvQ1O7l3mCPIMYCvim63bDmMf/dRIOvKAjjWDoQ6RMEuMPtIyEwb2WIVU8tzlwZT5r15/QS4s4uyy9iD8",
+                "localsignSignature": "sitm9n6nZnGyvUXQL8c4zmQXd4JLl/P85qy7pP4SCmU5bVdypKir0edGlaaxFLRlJphHwPp3wcF7N1EsjZIp0igi23mf6xCIuAME8uEkVUQIWhfwWovutZIYrgXpls9q",
+                "waczVersion": "1.1.1",
+                "software": "Webrecorder ArchiveWeb.page 0.11.3, using warcio.js 2.2.0",
+                "dateCrawled": "2023-10-27T16:20:55.442Z",
+                "userAgentCrawled": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+                "waczTitle": "santa-cruz-county-facebook-01",
+                "pages": {
+                    "6g2m0oobhixqz26b6dmfhi": "https://www.facebook.com/cummingsforsupervisor/posts/pfbid0fmfF1UGGsv4te1pZiLp6gPsnepX36yMTAKkRqKaAXcKst62SYP4kzhYyNpyp5T8el"
+                }
+            }
+        },
+        "private": {
+            "folder": {
+                "uploadFilename": "santa-cruz-county-facebook-01.wacz",
+                "uploadDirectory": "/mnt/integrity_store/store/rclone/sync/shared-input/mapping-black-california/rphc-manual-crawl/input"
+            }
+        },
+        "timestamp": "2023-10-27T19:26:42.372525Z",
+        "dateCreated": "2023-10-27T16:24:51Z",
+        "validatedSignatures": [
+            {
+                "provider": "Webrecorder ArchiveWeb.page 0.11.3, using warcio.js 2.2.0",
+                "algorithm": "ecdsa-key-sig",
+                "publicKey": "MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEk2ClNJP5sSdiJzYlBMfEKsheagCurKuqp/JCB7hsFI/INbAlvQ1O7l3mCPIMYCvim63bDmMf/dRIOvKAjjWDoQ6RMEuMPtIyEwb2WIVU8tzlwZT5r15/QS4s4uyy9iD8",
+                "signature": "sitm9n6nZnGyvUXQL8c4zmQXd4JLl/P85qy7pP4SCmU5bVdypKir0edGlaaxFLRlJphHwPp3wcF7N1EsjZIp0igi23mf6xCIuAME8uEkVUQIWhfwWovutZIYrgXpls9q",
+                "authenticatedMessage": "sha256:0cdeabf2783be84e66b0f55ab6a601a991ddc6c76173c1fb0fae853b195b0830",
+                "authenticatedMessageDescription": "The hash of datapackage.json in the WACZ file"
+            }
+        ]
+    },
+    "sourceId": {
+        "value": "santa-cruz-county-facebook-01",
+        "key": "wacz-id"
+    }
+}
