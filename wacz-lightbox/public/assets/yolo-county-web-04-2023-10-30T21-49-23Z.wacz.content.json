@@ -1,0 +1,50 @@
+{
+    "contentMetadata": {
+        "name": "WebArchive crawled on 2023-10-30",
+        "mime": "application/wacz",
+        "description": "Authenticated web archive of [ https://www.sandiegocounty.gov/hhsa/programs/phs/health-equity.html, https://www.sandiegocounty.gov/hhsa/programs/phs/health-equity.html] captured locally on 2023-10-30",
+        "author": {
+            "@type": "Organization",
+            "identifier": "https://mappingblackca.com",
+            "name": "MBC"
+        },
+        "extras": {
+            "wacz": {
+                "localsignSoftware": "Webrecorder ArchiveWeb.page 0.11.3, using warcio.js 2.2.0",
+                "localsignPublicKey": "MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEk2ClNJP5sSdiJzYlBMfEKsheagCurKuqp/JCB7hsFI/INbAlvQ1O7l3mCPIMYCvim63bDmMf/dRIOvKAjjWDoQ6RMEuMPtIyEwb2WIVU8tzlwZT5r15/QS4s4uyy9iD8",
+                "localsignSignature": "LCTgJws+8ZOSL4D3T6OBYeLDj/ZqPgiXBFj1mxNefPgIVk1yJUFJFMl9xHH8gKMp5cga+Yg5l4dKICVvAAIs5StKqn/0Ixx6YWCpSB+SBY/sDASI8zWqZDfteUysj/MY",
+                "waczVersion": "1.1.1",
+                "software": "Webrecorder ArchiveWeb.page 0.11.3, using warcio.js 2.2.0",
+                "dateCrawled": "2023-10-30T21:48:00.607Z",
+                "userAgentCrawled": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+                "waczTitle": "yolo-county-web-04",
+                "pages": {
+                    "ivtq746svizkxwwv9lqr": "https://www.sandiegocounty.gov/hhsa/programs/phs/health-equity.html",
+                    "tr737colftrwaennrohwp": "https://www.sandiegocounty.gov/hhsa/programs/phs/health-equity.html"
+                }
+            }
+        },
+        "private": {
+            "folder": {
+                "uploadFilename": "yolo-county-web-04.wacz",
+                "uploadDirectory": "/mnt/integrity_store/store/rclone/sync/shared-input/mapping-black-california/rphc-manual-crawl/input"
+            }
+        },
+        "timestamp": "2023-10-30T21:49:33.800699Z",
+        "dateCreated": "2023-10-30T21:49:23Z",
+        "validatedSignatures": [
+            {
+                "provider": "Webrecorder ArchiveWeb.page 0.11.3, using warcio.js 2.2.0",
+                "algorithm": "ecdsa-key-sig",
+                "publicKey": "MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEk2ClNJP5sSdiJzYlBMfEKsheagCurKuqp/JCB7hsFI/INbAlvQ1O7l3mCPIMYCvim63bDmMf/dRIOvKAjjWDoQ6RMEuMPtIyEwb2WIVU8tzlwZT5r15/QS4s4uyy9iD8",
+                "signature": "LCTgJws+8ZOSL4D3T6OBYeLDj/ZqPgiXBFj1mxNefPgIVk1yJUFJFMl9xHH8gKMp5cga+Yg5l4dKICVvAAIs5StKqn/0Ixx6YWCpSB+SBY/sDASI8zWqZDfteUysj/MY",
+                "authenticatedMessage": "sha256:dffdfe5d345576f9cc9b86a6d30a269b10fdc2ba2e795946b8e95972399a4418",
+                "authenticatedMessageDescription": "The hash of datapackage.json in the WACZ file"
+            }
+        ]
+    },
+    "sourceId": {
+        "value": "yolo-county-web-04",
+        "key": "wacz-id"
+    }
+}

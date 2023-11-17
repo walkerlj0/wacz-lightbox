@@ -1,0 +1,185 @@
+{
+  "contentMetadata": {
+    "name": "WebArchive crawled on 2023-09-01",
+    "mime": "application/wacz",
+    "description": "Authenticated web archive of [ https://www.riversideca.gov/cityclerk/sites/riversideca.gov.cityclerk/files/pdf/2020%20CPRC%20Annual%20Report%20Final.pdf] captured on 2023-09-01",
+    "author": {
+      "@type": "Organization",
+      "identifier": "MBC",
+      "name": "https://mappingblackca.com"
+    },
+    "extras": {
+      "wacz": {
+        "authsignSoftware": "authsigner 0.5.0",
+        "authsignDomain": "authsign.browsertrix.prod.starlinglab.org",
+        "waczVersion": "1.1.1",
+        "software": "py-wacz 0.4.9",
+        "dateCrawled": "2023-09-01T21:00:21Z",
+        "userAgentCrawled": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.49 Safari/537.36",
+        "pages": {
+          "317496bc-0b65-4ba8-9d9e-758f1bf535b5": "https://www.riversideca.gov/cityclerk/sites/riversideca.gov.cityclerk/files/pdf/2020%20CPRC%20Annual%20Report%20Final.pdf"
+        }
+      }
+    },
+    "private": {
+      "crawl_config": {
+        "id": "24b45cbd-2e72-4358-9c15-65066b17be1b",
+        "schedule": "",
+        "jobType": "custom",
+        "config": {
+          "seeds": [
+            {
+              "url": "https://www.riversideca.gov/cityclerk/sites/riversideca.gov.cityclerk/files/pdf/2020%20CPRC%20Annual%20Report%20Final.pdf",
+              "scopeType": "page",
+              "include": null,
+              "exclude": null,
+              "sitemap": null,
+              "allowHash": null,
+              "depth": null,
+              "extraHops": null
+            }
+          ],
+          "scopeType": "page",
+          "include": null,
+          "exclude": null,
+          "depth": -1,
+          "limit": 0,
+          "extraHops": 0,
+          "lang": null,
+          "blockAds": false,
+          "behaviorTimeout": 300,
+          "pageLoadTimeout": null,
+          "pageExtraDelay": 0,
+          "workers": null,
+          "headless": null,
+          "generateWACZ": null,
+          "combineWARC": null,
+          "useSitemap": false,
+          "logging": null,
+          "behaviors": "autoscroll,autoplay,autofetch,siteSpecific"
+        },
+        "tags": [],
+        "crawlTimeout": 86400,
+        "scale": 1,
+        "oid": "887c3ce4-fda9-4a33-a05c-c800f3261817",
+        "profileid": "ccbfd60c-1697-4e1c-97d2-e84cfda55e64",
+        "name": "riverside-city-pdf-06",
+        "description": null,
+        "created": "2023-09-01T17:33:30",
+        "createdBy": "c595a688-ef1a-4811-bc94-09cadcb2ab33",
+        "modified": "2023-09-01T17:33:30",
+        "modifiedBy": "c595a688-ef1a-4811-bc94-09cadcb2ab33",
+        "autoAddCollections": [],
+        "inactive": false,
+        "rev": 0,
+        "crawlAttemptCount": 1,
+        "crawlCount": 1,
+        "crawlSuccessfulCount": 1,
+        "totalSize": 4008217,
+        "lastCrawlId": "manual-20230901173330-24b45cbd-2e7",
+        "lastCrawlStartTime": "2023-09-01T17:33:30",
+        "lastStartedBy": "c595a688-ef1a-4811-bc94-09cadcb2ab33",
+        "lastCrawlTime": "2023-09-01T21:00:46",
+        "lastCrawlState": "complete",
+        "lastCrawlSize": 4008217,
+        "lastRun": "2023-09-01T21:00:46",
+        "isCrawlRunning": false,
+        "lastCrawlStopping": false,
+        "profileName": "Daryl-Starling",
+        "createdByName": "admin",
+        "modifiedByName": "admin",
+        "lastStartedByName": "admin",
+        "firstSeed": null
+      },
+      "crawl_data": {
+        "id": "manual-20230901173330-24b45cbd-2e7",
+        "type": "crawl",
+        "userid": "c595a688-ef1a-4811-bc94-09cadcb2ab33",
+        "oid": "887c3ce4-fda9-4a33-a05c-c800f3261817",
+        "userName": "admin",
+        "name": "riverside-city-pdf-06",
+        "description": null,
+        "started": "2023-09-01T17:33:30",
+        "finished": "2023-09-01T21:00:46",
+        "state": "complete",
+        "stats": {
+          "found": 1,
+          "done": 1,
+          "size": 18842
+        },
+        "fileSize": 4008217,
+        "fileCount": 1,
+        "tags": [],
+        "errors": null,
+        "collections": [],
+        "config": {
+          "seeds": [
+            {
+              "url": "https://www.riversideca.gov/cityclerk/sites/riversideca.gov.cityclerk/files/pdf/2020%20CPRC%20Annual%20Report%20Final.pdf",
+              "scopeType": "page",
+              "include": null,
+              "exclude": null,
+              "sitemap": null,
+              "allowHash": null,
+              "depth": null,
+              "extraHops": null
+            }
+          ],
+          "scopeType": "page",
+          "include": null,
+          "exclude": null,
+          "depth": -1,
+          "limit": 0,
+          "extraHops": 0,
+          "lang": null,
+          "blockAds": false,
+          "behaviorTimeout": 300,
+          "pageLoadTimeout": null,
+          "pageExtraDelay": 0,
+          "workers": null,
+          "headless": null,
+          "generateWACZ": null,
+          "combineWARC": null,
+          "useSitemap": false,
+          "logging": null,
+          "behaviors": "autoscroll,autoplay,autofetch,siteSpecific"
+        },
+        "cid": "24b45cbd-2e72-4358-9c15-65066b17be1b",
+        "firstSeed": "https://www.riversideca.gov/cityclerk/sites/riversideca.gov.cityclerk/files/pdf/2020%20CPRC%20Annual%20Report%20Final.pdf",
+        "seedCount": 1,
+        "profileName": null,
+        "stopping": false,
+        "manual": true,
+        "cid_rev": 0,
+        "resources": [
+          {
+            "name": "887c3ce4-fda9-4a33-a05c-c800f3261817/20230901210021338-24b45cbd-2e7-0.wacz",
+            "path": "/data/887c3ce4-fda9-4a33-a05c-c800f3261817/20230901210021338-24b45cbd-2e7-0.wacz?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ADMIN%2F20230921%2F%2Fs3%2Faws4_request&X-Amz-Date=20230921T173620Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=b81cd262677c4aaca8fcfc45065509d78a1f498962ffeec708c7bc310c894b4a",
+            "hash": "2a849a2427d437d2c2b079276f38596476259fbc05a453a62d5450c4dff393c9",
+            "size": 4008217,
+            "crawlId": "manual-20230901173330-24b45cbd-2e7"
+          }
+        ]
+      }
+    },
+    "timestamp": "2023-09-21T17:36:20.978746Z",
+    "validatedSignatures": [
+      {
+        "provider": "authsigner 0.5.0",
+        "algorithm": "ecdsa-certificate-sig",
+        "custom": {
+          "hash": "sha256:3f714c3383fa75dc075dfae0bc7558b96ca8e9b6b66bccb4f7e6806733214999",
+          "created": "2023-09-01T21:00:21Z",
+          "software": "authsigner 0.5.0",
+          "signature": "MEUCIQD2+848YNRX46RqnZX3/Ib0U4Q7gzaeBz9kwd6XG53dbAIgVUm/rGd5A2aWQBOUIH14snYfG01T7H0Wecuxfmpf+Jg=",
+          "domain": "authsign.browsertrix.prod.starlinglab.org",
+          "domainCert": "-----BEGIN CERTIFICATE-----\nMIIEVDCCAzygAwIBAgISA50kcQuefcueW/zU41+JL2KwMA0GCSqGSIb3DQEBCwUA\nMDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD\nEwJSMzAeFw0yMzA4MzAyMzUwMTVaFw0yMzExMjgyMzUwMTRaMDQxMjAwBgNVBAMT\nKWF1dGhzaWduLmJyb3dzZXJ0cml4LnByb2Quc3RhcmxpbmdsYWIub3JnMFkwEwYH\nKoZIzj0CAQYIKoZIzj0DAQcDQgAEWYdNj2CAFAiK2MirfpC3Wek7DGEOWdJaFoLg\nCuoIQ2XpZRZ+n1eLDRiJsRYWqVEMZ1uLmsbD9pLCh5rNFjDcmKOCAiswggInMA4G\nA1UdDwEB/wQEAwIHgDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDAYD\nVR0TAQH/BAIwADAdBgNVHQ4EFgQU/YwGdO9tXDXLDkfvM8mWk/oPQCswHwYDVR0j\nBBgwFoAUFC6zF7dYVsuuUAlA5h+vnYsUwsYwVQYIKwYBBQUHAQEESTBHMCEGCCsG\nAQUFBzABhhVodHRwOi8vcjMuby5sZW5jci5vcmcwIgYIKwYBBQUHMAKGFmh0dHA6\nLy9yMy5pLmxlbmNyLm9yZy8wNAYDVR0RBC0wK4IpYXV0aHNpZ24uYnJvd3NlcnRy\naXgucHJvZC5zdGFybGluZ2xhYi5vcmcwEwYDVR0gBAwwCjAIBgZngQwBAgEwggEE\nBgorBgEEAdZ5AgQCBIH1BIHyAPAAdwB6MoxU2LcttiDqOOBSHumEFnAyE4VNO9Ir\nwTpXo1LrUgAAAYpJEcKfAAAEAwBIMEYCIQDLs6CXcuSloC4+caHjz4f4G0pVniF3\nEH6QHyw8Y7sOLwIhAMeb2NyLsud1ujoo56YnW/LQe4ZVBx+DNE8rXFBmVOdBAHUA\nrfe++nz/EMiLnT2cHj4YarRnKV3PsQwkyoWGNOvcgooAAAGKSRHC8AAABAMARjBE\nAiEAoNiNz4EytY01kW0Ij5AR17xHmJiYDMe9b+UQUODb4acCHx0D/3S0EkcDPl59\npK3886VVRM28NK1UMSv5yc6pDA4wDQYJKoZIhvcNAQELBQADggEBAErwJXjyOPWi\njkR32/lazOimDba5RgN5vKllXFTcXpB99W0oOjxymTvCjQIAPx46u4USUsw0O/JZ\npgdqsUgX4QirkLhcw6QuGt4ZQSkUHdpCmSLkhYr+BiXubmW3iGpbZ0j80ad0txcp\ndAvq7C6cggfkkBuHuGo1XMNZtJiWEGOMc97e8xzxBsMqPE6Fg3P4KWx7KymGV//f\nrbnrLeXIPVLZrceSsss4e+nx4zNeueDFwjLMV74kdeELNwb8yEUi4nK74ePOZSd2\n50cyQ17R9Qp1wSIyU9L33ufqXfLJ7SUqCe6w6MwA03VWZmvMg0xAQzAAmwYd+Dmh\ngYcGwl1NAb0=\n-----END CERTIFICATE-----\n\n-----BEGIN CERTIFICATE-----\nMIIFFjCCAv6gAwIBAgIRAJErCErPDBinU/bWLiWnX1owDQYJKoZIhvcNAQELBQAw\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjAwOTA0MDAwMDAw\nWhcNMjUwOTE1MTYwMDAwWjAyMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3Mg\nRW5jcnlwdDELMAkGA1UEAxMCUjMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK\nAoIBAQC7AhUozPaglNMPEuyNVZLD+ILxmaZ6QoinXSaqtSu5xUyxr45r+XXIo9cP\nR5QUVTVXjJ6oojkZ9YI8QqlObvU7wy7bjcCwXPNZOOftz2nwWgsbvsCUJCWH+jdx\nsxPnHKzhm+/b5DtFUkWWqcFTzjTIUu61ru2P3mBw4qVUq7ZtDpelQDRrK9O8Zutm\nNHz6a4uPVymZ+DAXXbpyb/uBxa3Shlg9F8fnCbvxK/eG3MHacV3URuPMrSXBiLxg\nZ3Vms/EY96Jc5lP/Ooi2R6X/ExjqmAl3P51T+c8B5fWmcBcUr2Ok/5mzk53cU6cG\n/kiFHaFpriV1uxPMUgP17VGhi9sVAgMBAAGjggEIMIIBBDAOBgNVHQ8BAf8EBAMC\nAYYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMBIGA1UdEwEB/wQIMAYB\nAf8CAQAwHQYDVR0OBBYEFBQusxe3WFbLrlAJQOYfr52LFMLGMB8GA1UdIwQYMBaA\nFHm0WeZ7tuXkAXOACIjIGlj26ZtuMDIGCCsGAQUFBwEBBCYwJDAiBggrBgEFBQcw\nAoYWaHR0cDovL3gxLmkubGVuY3Iub3JnLzAnBgNVHR8EIDAeMBygGqAYhhZodHRw\nOi8veDEuYy5sZW5jci5vcmcvMCIGA1UdIAQbMBkwCAYGZ4EMAQIBMA0GCysGAQQB\ngt8TAQEBMA0GCSqGSIb3DQEBCwUAA4ICAQCFyk5HPqP3hUSFvNVneLKYY611TR6W\nPTNlclQtgaDqw+34IL9fzLdwALduO/ZelN7kIJ+m74uyA+eitRY8kc607TkC53wl\nikfmZW4/RvTZ8M6UK+5UzhK8jCdLuMGYL6KvzXGRSgi3yLgjewQtCPkIVz6D2QQz\nCkcheAmCJ8MqyJu5zlzyZMjAvnnAT45tRAxekrsu94sQ4egdRCnbWSDtY7kh+BIm\nlJNXoB1lBMEKIq4QDUOXoRgffuDghje1WrG9ML+Hbisq/yFOGwXD9RiX8F6sw6W4\navAuvDszue5L3sz85K+EC4Y/wFVDNvZo4TYXao6Z0f+lQKc0t8DQYzk1OXVu8rp2\nyJMC6alLbBfODALZvYH7n7do1AZls4I9d1P4jnkDrQoxB3UqQ9hVl3LEKQ73xF1O\nyK5GhDDX8oVfGKF5u+decIsH4YaTw7mP3GFxJSqv3+0lUFJoi5Lc5da149p90Ids\nhCExroL1+7mryIkXPeFM5TgO9r0rvZaBFOvV2z0gp35Z0+L4WPlbuEjN/lxPFin+\nHlUjr8gRsI3qfJOQFy/9rKIJR0Y/8Omwt/8oTWgy1mdeHmmjk7j1nYsvC9JSQ6Zv\nMldlTTKB3zhThV1+XWYp6rjd5JW1zbVWEkLNxE7GJThEUG3szgBVGP7pSWTUTsqX\nnLRbwHOoq7hHwg==\n-----END CERTIFICATE-----\n\n-----BEGIN CERTIFICATE-----\nMIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/\nMSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT\nDkRTVCBSb290IENBIFgzMB4XDTIxMDEyMDE5MTQwM1oXDTI0MDkzMDE4MTQwM1ow\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwggIiMA0GCSqGSIb3DQEB\nAQUAA4ICDwAwggIKAoICAQCt6CRz9BQ385ueK1coHIe+3LffOJCMbjzmV6B493XC\nov71am72AE8o295ohmxEk7axY/0UEmu/H9LqMZshftEzPLpI9d1537O4/xLxIZpL\nwYqGcWlKZmZsj348cL+tKSIG8+TA5oCu4kuPt5l+lAOf00eXfJlII1PoOK5PCm+D\nLtFJV4yAdLbaL9A4jXsDcCEbdfIwPPqPrt3aY6vrFk/CjhFLfs8L6P+1dy70sntK\n4EwSJQxwjQMpoOFTJOwT2e4ZvxCzSow/iaNhUd6shweU9GNx7C7ib1uYgeGJXDR5\nbHbvO5BieebbpJovJsXQEOEO3tkQjhb7t/eo98flAgeYjzYIlefiN5YNNnWe+w5y\nsR2bvAP5SQXYgd0FtCrWQemsAXaVCg/Y39W9Eh81LygXbNKYwagJZHduRze6zqxZ\nXmidf3LWicUGQSk+WT7dJvUkyRGnWqNMQB9GoZm1pzpRboY7nn1ypxIFeFntPlF4\nFQsDj43QLwWyPntKHEtzBRL8xurgUBN8Q5N0s8p0544fAQjQMNRbcTa0B7rBMDBc\nSLeCO5imfWCKoqMpgsy6vYMEG6KDA0Gh1gXxG8K28Kh8hjtGqEgqiNx2mna/H2ql\nPRmP6zjzZN7IKw0KKP/32+IVQtQi0Cdd4Xn+GOdwiK1O5tmLOsbdJ1Fu/7xk9TND\nTwIDAQABo4IBRjCCAUIwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYw\nSwYIKwYBBQUHAQEEPzA9MDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5pZGVudHJ1\nc3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3YzAfBgNVHSMEGDAWgBTEp7Gkeyxx\n+tvhS5B1/8QVYIWJEDBUBgNVHSAETTBLMAgGBmeBDAECATA/BgsrBgEEAYLfEwEB\nATAwMC4GCCsGAQUFBwIBFiJodHRwOi8vY3BzLnJvb3QteDEubGV0c2VuY3J5cHQu\nb3JnMDwGA1UdHwQ1MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0LmNvbS9E\nU1RST09UQ0FYM0NSTC5jcmwwHQYDVR0OBBYEFHm0WeZ7tuXkAXOACIjIGlj26Ztu\nMA0GCSqGSIb3DQEBCwUAA4IBAQAKcwBslm7/DlLQrt2M51oGrS+o44+/yQoDFVDC\n5WxCu2+b9LRPwkSICHXM6webFGJueN7sJ7o5XPWioW5WlHAQU7G75K/QosMrAdSW\n9MUgNTP52GE24HGNtLi1qoJFlcDyqSMo59ahy2cI2qBDLKobkx/J3vWraV0T9VuG\nWCLKTVXkcGdtwlfFRjlBz4pYg1htmf5X6DYO8A4jqv2Il9DjXA6USbW1FzXSLr9O\nhe8Y4IWS6wY7bCkjCWDcRQJMEhg76fsO3txE+FiYruq9RUWhiF1myv4Q6W+CyBFC\nDfvp7OOGAN6dEOM4+qR9sdjoSYKEBpsr6GtPAQw4dy753ec5\n-----END CERTIFICATE-----\n",
+          "timeSignature": "MIIFQzADAgEAMIIFOgYJKoZIhvcNAQcCoIIFKzCCBScCAQMxDzANBglghkgBZQMEAgMFADCCAYEGCyqGSIb3DQEJEAEEoIIBcASCAWwwggFoAgEBBgQqAwQBMC8wCwYJYIZIAWUDBAIBBCAVhqKAdHZhiavhW2Y/IyYzgBYUJOcJZzrzdr0R6yQmrQIDUA88GA8yMDIzMDkwMTIxMDAyMVoBAf+gggERpIIBDTCCAQkxETAPBgNVBAoTCEZyZWUgVFNBMQwwCgYDVQQLEwNUU0ExdjB0BgNVBA0TbVRoaXMgY2VydGlmaWNhdGUgZGlnaXRhbGx5IHNpZ25zIGRvY3VtZW50cyBhbmQgdGltZSBzdGFtcCByZXF1ZXN0cyBtYWRlIHVzaW5nIHRoZSBmcmVldHNhLm9yZyBvbmxpbmUgc2VydmljZXMxGDAWBgNVBAMTD3d3dy5mcmVldHNhLm9yZzEiMCAGCSqGSIb3DQEJARYTYnVzaWxlemFzQGdtYWlsLmNvbTESMBAGA1UEBxMJV3VlcnpidXJnMQswCQYDVQQGEwJERTEPMA0GA1UECBMGQmF5ZXJuMYIDijCCA4YCAQEwgaMwgZUxETAPBgNVBAoTCEZyZWUgVFNBMRAwDgYDVQQLEwdSb290IENBMRgwFgYDVQQDEw93d3cuZnJlZXRzYS5vcmcxIjAgBgkqhkiG9w0BCQEWE2J1c2lsZXphc0BnbWFpbC5jb20xEjAQBgNVBAcTCVd1ZXJ6YnVyZzEPMA0GA1UECBMGQmF5ZXJuMQswCQYDVQQGEwJERQIJAMHphhYNqOmCMA0GCWCGSAFlAwQCAwUAoIG4MBoGCSqGSIb3DQEJAzENBgsqhkiG9w0BCRABBDAcBgkqhkiG9w0BCQUxDxcNMjMwOTAxMjEwMDIxWjArBgsqhkiG9w0BCRACDDEcMBowGDAWBBSRbaPYYOzKguNLxZ0Xk+fpaIdfFDBPBgkqhkiG9w0BCQQxQgRANqWabfXqTpJuLRj4Xb2+Mu1e/GcJJvr60Mp9G2FPqByohfgBgn6vLXagW4YwoJ/RO6y51TdlIt7koEmBxdpdBDANBgkqhkiG9w0BAQEFAASCAgAhtaqY2ZIgdm1PbwlVT1mJPwKkVLwtqFiKQOuGM/veEeZ3XKlgSaWy0IQJ02heFl/8RPzfAjVup5UufTkxTLD26Y/7yj40A0Fpcseob54BBsTwHoQP+XHcJ6+Bo6BNzs2BVtmJmbW7Rzhk2aXyH+MM9zlge7OEDeRJLN/8JOTxFEYEKQJ+gKCPzwxD8vEdHB/0om8MRA7ndoC5rkvQFJE8fFqERYB6B1HICLJyTD3Ldre/z03KxthXeMoc7vKnwxwK2m69v/c3D+CtOD6K3dcb5YBsdqJBhZejqpBC61xqgQ0kG0ezL3+GUpgtIOG36M/wnI6jPxyfcqm8MRqkCz9vZyq2WdxO09Bei3soStwPAmImAxM0E9wKbnM8kw3SOckWRi4wbE+fRQgx0+1/5fKOChxst76G+6NNpxSRor6lThYaRoVlszopJEJo2qFq+r+ga2oTs4WUBRQuRLCzz9Mro342PaUxXaVvgl+5FGiYgB5Kopa2+TUsNwXAZVfVUFQATc2LaTOiIsBqZQNpxaTu7FBcIANn2NmBKUt318HhfHR3vKG6KvBN1+QSIonPQArn90XLuwVsRQNIdIhGHczRJP+ORALfNCI00IONBlDlP8ji6xj699bPvM8ZS5HZ/FY3R/5KO8xAThTiP+BYVLwUwD9+7zjQ8bbh0X/ho2dyPw==",
+          "timestampCert": "-----BEGIN CERTIFICATE-----\nMIIIATCCBemgAwIBAgIJAMHphhYNqOmCMA0GCSqGSIb3DQEBDQUAMIGVMREwDwYD\nVQQKEwhGcmVlIFRTQTEQMA4GA1UECxMHUm9vdCBDQTEYMBYGA1UEAxMPd3d3LmZy\nZWV0c2Eub3JnMSIwIAYJKoZIhvcNAQkBFhNidXNpbGV6YXNAZ21haWwuY29tMRIw\nEAYDVQQHEwlXdWVyemJ1cmcxDzANBgNVBAgTBkJheWVybjELMAkGA1UEBhMCREUw\nHhcNMTYwMzEzMDE1NzM5WhcNMjYwMzExMDE1NzM5WjCCAQkxETAPBgNVBAoTCEZy\nZWUgVFNBMQwwCgYDVQQLEwNUU0ExdjB0BgNVBA0TbVRoaXMgY2VydGlmaWNhdGUg\nZGlnaXRhbGx5IHNpZ25zIGRvY3VtZW50cyBhbmQgdGltZSBzdGFtcCByZXF1ZXN0\ncyBtYWRlIHVzaW5nIHRoZSBmcmVldHNhLm9yZyBvbmxpbmUgc2VydmljZXMxGDAW\nBgNVBAMTD3d3dy5mcmVldHNhLm9yZzEiMCAGCSqGSIb3DQEJARYTYnVzaWxlemFz\nQGdtYWlsLmNvbTESMBAGA1UEBxMJV3VlcnpidXJnMQswCQYDVQQGEwJERTEPMA0G\nA1UECBMGQmF5ZXJuMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAtZEE\njE5IbzTp3Ahif8I3UWIjaYS4LLEwvv9RfPw4+EvOXGWodNqyYhrgvOfjNWPg7ek0\n/V+IIxWfB4SICCJ0YMHtiCYXBvQoEzQ1nfu4G9E1P8F5YQrxqMjIZdwA6iOzqJvm\nvQO6hansgn1gVlkF4i1qWE7ROArhUCgM7jl+mKAS84BGQAeGJEO8B3y5X0Ia8xcS\n2Wg8223/uvPIululZq5SPUWdYXc0bU2EDieIa3wBxbiQ14ouJ7uo3S+aKBLhV9Yv\nkhxlliVIBp3Nt9Bt4YHeDpVw1m+HIgzii2KKtVkG8+4MIQ9wUej0hYr4uaktCeRq\n8tnLpb/PrRaM32BEkaSwZgOxFMr3Ax8GXn7u+lPFdfNJDAWdLjLdx2rE1MTHEGg7\nl/0b5ZG8YQVRhtiPmgORswe2+R7ZVNqjb5rNah4Uqi5K3xdGS1TbGNu2/+MAgCRl\nRzcENs5Od7rl3m/g8/nW5/++tGHnlOkvsJUfiq5hpBLM6bIQdGNci+MnrhoPa0pk\nbrD4RjvGO/hFUwQ10Z6AJRHsn2bDSWlS2L7LabCqTUxB9gUV/n3LuJMZzdpZumrq\nS+POrnGOb8tszX25/FC7FbEvNmWwqjByicLm3UsRHOSLotnv21prmlBgaTNPs09v\nx64zDws0IIqsgN8yZv3ZBGWHa6LLiY2VBTFbbnsCAwEAAaOCAdswggHXMAkGA1Ud\nEwQCMAAwHQYDVR0OBBYEFG52C3tOT5zhYMptLOknoqKUs3c3MB8GA1UdIwQYMBaA\nFPpVDYw0ZlFDTPfns6dsla965qSXMAsGA1UdDwQEAwIGwDAWBgNVHSUBAf8EDDAK\nBggrBgEFBQcDCDBjBggrBgEFBQcBAQRXMFUwKgYIKwYBBQUHMAKGHmh0dHA6Ly93\nd3cuZnJlZXRzYS5vcmcvdHNhLmNydDAnBggrBgEFBQcwAYYbaHR0cDovL3d3dy5m\ncmVldHNhLm9yZzoyNTYwMDcGA1UdHwQwMC4wLKAqoCiGJmh0dHA6Ly93d3cuZnJl\nZXRzYS5vcmcvY3JsL3Jvb3RfY2EuY3JsMIHGBgNVHSAEgb4wgbswgbgGAQAwgbIw\nMwYIKwYBBQUHAgEWJ2h0dHA6Ly93d3cuZnJlZXRzYS5vcmcvZnJlZXRzYV9jcHMu\naHRtbDAyBggrBgEFBQcCARYmaHR0cDovL3d3dy5mcmVldHNhLm9yZy9mcmVldHNh\nX2Nwcy5wZGYwRwYIKwYBBQUHAgIwOxo5RnJlZVRTQSB0cnVzdGVkIHRpbWVzdGFt\ncGluZyBTb2Z0d2FyZSBhcyBhIFNlcnZpY2UgKFNhYVMpMA0GCSqGSIb3DQEBDQUA\nA4ICAQClyUTixvrAoU2TCn/QoLFytB/BSDw+lXxoorzZuXZPGpUBYf1yRy1Bpe7S\nd3hiA7VCIkD7OibN4XYIe2+xAR30zBniVxqkoFEQlmXpTEb1C9Kt7mrEE34lGyWj\nnavaRRUV2P+eByCejsILeHT34aDt58AJN/6EozT4syZc7S2O2d9hOWWDZ3/rOCwe\n47I+bqXwXfMN57n4kAXSUmb2EvOci09tq6bXv7rBljK5Bjcyn1Km8GahDkPqqB+E\nmmxf4/6LXqIydfaH8gUuUC6mwwdipmjM4Hhx3Y6X4xW7qSniVYmXegoxLOlsUQax\nQ3x3nys2GxgoiPPuiiNDdPoGPpVhkmJ/fEMQc5ZdEmCSjroAnoA0Ka4yTPlvBCNU\n83vKWv3cefeTRqs4i/x58B3JhhJU6mzBKZQQdrg9IFVvO+UTJoN/KHb3gzs3Dnw9\nQQUjgn1PU0AMciGNdSKf8QxviJOpo6HAxCu0yJjBPfQcf2VztPxWUVlxphCnsNKF\nfIIlqfsgTqzsouiXGqGvh4hqKuPHL+CgquhCmAp3vvFrkhFUWAkNmCtZRmA3ZOda\nCtPRFFS5mG9ni5q2r+hJcDOuOr/U60O3vJ3uaIFZSeZIFYKoLnhSd/IoIQfv45Ag\nDgUIrLjqguolBSdvPJ2io9O0rTi7+IQr2jb8JEgpH1WNwC3R4A==\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIH/zCCBeegAwIBAgIJAMHphhYNqOmAMA0GCSqGSIb3DQEBDQUAMIGVMREwDwYD\nVQQKEwhGcmVlIFRTQTEQMA4GA1UECxMHUm9vdCBDQTEYMBYGA1UEAxMPd3d3LmZy\nZWV0c2Eub3JnMSIwIAYJKoZIhvcNAQkBFhNidXNpbGV6YXNAZ21haWwuY29tMRIw\nEAYDVQQHEwlXdWVyemJ1cmcxDzANBgNVBAgTBkJheWVybjELMAkGA1UEBhMCREUw\nHhcNMTYwMzEzMDE1MjEzWhcNNDEwMzA3MDE1MjEzWjCBlTERMA8GA1UEChMIRnJl\nZSBUU0ExEDAOBgNVBAsTB1Jvb3QgQ0ExGDAWBgNVBAMTD3d3dy5mcmVldHNhLm9y\nZzEiMCAGCSqGSIb3DQEJARYTYnVzaWxlemFzQGdtYWlsLmNvbTESMBAGA1UEBxMJ\nV3VlcnpidXJnMQ8wDQYDVQQIEwZCYXllcm4xCzAJBgNVBAYTAkRFMIICIjANBgkq\nhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAtgKODjAy8REQ2WTNqUudAnjhlCrpE6ql\nmQfNppeTmVvZrH4zutn+NwTaHAGpjSGv4/WRpZ1wZ3BRZ5mPUBZyLgq0YrIfQ5Fx\n0s/MRZPzc1r3lKWrMR9sAQx4mN4z11xFEO529L0dFJjPF9MD8Gpd2feWzGyptlel\nb+PqT+++fOa2oY0+NaMM7l/xcNHPOaMz0/2olk0i22hbKeVhvokPCqhFhzsuhKsm\nq4Of/o+t6dI7sx5h0nPMm4gGSRhfq+z6BTRgCrqQG2FOLoVFgt6iIm/BnNffUr7V\nDYd3zZmIwFOj/H3DKHoGik/xK3E82YA2ZulVOFRW/zj4ApjPa5OFbpIkd0pmzxzd\nEcL479hSA9dFiyVmSxPtY5ze1P+BE9bMU1PScpRzw8MHFXxyKqW13Qv7LWw4sbk3\nSciB7GACbQiVGzgkvXG6y85HOuvWNvC5GLSiyP9GlPB0V68tbxz4JVTRdw/Xn/XT\nFNzRBM3cq8lBOAVt/PAX5+uFcv1S9wFE8YjaBfWCP1jdBil+c4e+0tdywT2oJmYB\nBF/kEt1wmGwMmHunNEuQNzh1FtJY54hbUfiWi38mASE7xMtMhfj/C4SvapiDN837\ngYaPfs8x3KZxbX7C3YAsFnJinlwAUss1fdKar8Q/YVs7H/nU4c4Ixxxz4f67fcVq\nM2ITKentbCMCAwEAAaOCAk4wggJKMAwGA1UdEwQFMAMBAf8wDgYDVR0PAQH/BAQD\nAgHGMB0GA1UdDgQWBBT6VQ2MNGZRQ0z357OnbJWveuaklzCBygYDVR0jBIHCMIG/\ngBT6VQ2MNGZRQ0z357OnbJWveuakl6GBm6SBmDCBlTERMA8GA1UEChMIRnJlZSBU\nU0ExEDAOBgNVBAsTB1Jvb3QgQ0ExGDAWBgNVBAMTD3d3dy5mcmVldHNhLm9yZzEi\nMCAGCSqGSIb3DQEJARYTYnVzaWxlemFzQGdtYWlsLmNvbTESMBAGA1UEBxMJV3Vl\ncnpidXJnMQ8wDQYDVQQIEwZCYXllcm4xCzAJBgNVBAYTAkRFggkAwemGFg2o6YAw\nMwYDVR0fBCwwKjAooCagJIYiaHR0cDovL3d3dy5mcmVldHNhLm9yZy9yb290X2Nh\nLmNybDCBzwYDVR0gBIHHMIHEMIHBBgorBgEEAYHyJAEBMIGyMDMGCCsGAQUFBwIB\nFidodHRwOi8vd3d3LmZyZWV0c2Eub3JnL2ZyZWV0c2FfY3BzLmh0bWwwMgYIKwYB\nBQUHAgEWJmh0dHA6Ly93d3cuZnJlZXRzYS5vcmcvZnJlZXRzYV9jcHMucGRmMEcG\nCCsGAQUFBwICMDsaOUZyZWVUU0EgdHJ1c3RlZCB0aW1lc3RhbXBpbmcgU29mdHdh\ncmUgYXMgYSBTZXJ2aWNlIChTYWFTKTA3BggrBgEFBQcBAQQrMCkwJwYIKwYBBQUH\nMAGGG2h0dHA6Ly93d3cuZnJlZXRzYS5vcmc6MjU2MDANBgkqhkiG9w0BAQ0FAAOC\nAgEAaK9+v5OFYu9M6ztYC+L69sw1omdyli89lZAfpWMMh9CRmJhM6KBqM/ipwoLt\nnxyxGsbCPhcQjuTvzm+ylN6VwTMmIlVyVSLKYZcdSjt/eCUN+41K7sD7GVmxZBAF\nILnBDmTGJmLkrU0KuuIpj8lI/E6Z6NnmuP2+RAQSHsfBQi6sssnXMo4HOW5gtPO7\ngDrUpVXID++1P4XndkoKn7Svw5n0zS9fv1hxBcYIHPPQUze2u30bAQt0n0iIyRLz\naWuhtpAtd7ffwEbASgzB7E+NGF4tpV37e8KiA2xiGSRqT5ndu28fgpOY87gD3ArZ\nDctZvvTCfHdAS5kEO3gnGGeZEVLDmfEsv8TGJa3AljVa5E40IQDsUXpQLi8G+UC4\n1DWZu8EVT4rnYaCw1VX7ShOR1PNCCvjb8S8tfdudd9zhU3gEB0rxdeTy1tVbNLXW\n99y90xcwr1ZIDUwM/xQ/noO8FRhm0LoPC73Ef+J4ZBdrvWwauF3zJe33d4ibxEcb\n8/pz5WzFkeixYM2nsHhqHsBKw7JPouKNXRnl5IAE1eFmqDyC7G/VT7OF669xM6hb\nUt5G21JE4cNK6NNucS+fzg1JPX0+3VhsYZjj7D5uljRvQXrJ8iHgr/M6j2oLHvTA\nI2MLdq2qjZFDOCXsxBxJpbmLGBx9ow6ZerlUxzws2AWv2pk=\n-----END CERTIFICATE-----\n",
+          "version": "0.1.0"
+        }
+      }
+    ],
+    "dateCreated": "2023-09-01T17:33:30"
+  }
+}

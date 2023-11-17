@@ -19,7 +19,7 @@
   // $: mobile = innerWidth < 650;
   let visiblePane = 'replay-web';
 
-  let url, archive_name, date_crawled_formatted, domain, domainCert,
+  let url, archive_name, date_crawled_formatted, domain, domainCert, showDomainCert,
     package_hash, iscn, numbers, avalanche, ipfs, filecoin,
     page_name, sha256Hash;
   let parsed_json = false;
@@ -34,14 +34,26 @@
       const json = await response.json();
 
       // console.log(json);
-      // console.log(json_content);
+      console.log(json_content);
 
       page_name = json_content?.name;
-      if (json_content?.private?.crawl_config?.config?.seeds) {
-        url = json_content?.private?.crawl_config?.config?.seeds[0]?.url;
-      } else {
-        url = json_content?.private?.crawl_config?.firstSeed;
+      if (json_content?.private?.crawl_config) { // Browsertrix
+        if (json_content?.private?.crawl_config?.config?.seeds) {
+          url = json_content?.private?.crawl_config?.config?.seeds[0]?.url;
+        } else {
+          url = json_content?.private?.crawl_config?.firstSeed;
+        }
+      } else {  // WebRecorder
+        console.log(json_content?.extras?.wacz?.pages);
+        let firstKey = Object.keys(json_content?.extras?.wacz?.pages)[0];
+        console.log(firstKey);      
+        url=json_content?.extras?.wacz?.pages[firstKey];
       }
+      // if (json_content?.private?.crawl_config?.config?.seeds) {
+      //   url = json_content?.private?.crawl_config?.config?.seeds[0]?.url;
+      // } else {
+      //   url = json_content?.private?.crawl_config?.firstSeed;
+      // }
       if (json?.sourceId?.value) {
         archive_name = json?.sourceId?.value;
       } else {
@@ -51,15 +63,30 @@
       let formatter = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: 'numeric',});
       let date_parts = formatter.formatToParts(date_crawled);
       date_crawled_formatted = (date_parts[2].value + ' ' + date_parts[0].value + ' ' + date_parts[4].value);
-      domain = json_content?.validatedSignatures[0]?.custom?.domain;
+
+      if (json_content?.validatedSignatures[0]?.custom) { // Certificate
       domainCert = json_content?.validatedSignatures[0]?.custom?.domainCert;
+        domain = json_content?.validatedSignatures[0]?.custom?.domain;
       package_hash = json_content?.validatedSignatures[0]?.custom?.hash;
+        domainCert = json_content?.validatedSignatures[0]?.custom?.domainCert;
+        package_hash = json_content?.validatedSignatures[0]?.custom?.hash;
+        showDomainCert=true;
+      } else { // Local Key
+        domain=json_content?.validatedSignatures[0]?.publicKey;
+        showDomainCert=false;
+        package_hash=json_content?.validatedSignatures[0]?.authenticatedMessage
+      }
+      // domain = json_content?.validatedSignatures[0]?.custom?.domain;
+      // domainCert = json_content?.validatedSignatures[0]?.custom?.domainCert;
+      // package_hash = json_content?.validatedSignatures[0]?.custom?.hash;
       iscn = json?.registrationRecords?.iscn?.txHash;
       numbers = json?.registrationRecords?.numbersProtocol?.numbers?.txHash;
       avalanche = json?.registrationRecords?.numbersProtocol?.avalanche?.txHash;
       ipfs = json?.content?.cid;
       filecoin = "baga6ea4seaqflgunguw3rpwzdf47wzb4m6664pnj2732cddj4uh45x4xg5kuoma";
-      hash(domainCert).then(h => sha256Hash = h);
+      if (showDomainCert) {
+        hash(domainCert).then(h => sha256Hash = h);
+      }
       // console.log('parsed json');
       parsed_json = true;
   }
@@ -111,6 +138,11 @@
     filename;
     parsed_json = false;
     import_json();
+  }
+
+  $: {
+    filename;
+    visiblePane = 'replay-web';
   }
 
 </script>
@@ -168,7 +200,9 @@
                 <span class="tooltiptext plus">The notary, signed with a cryptographic certificate to establish a witness</span>: 
                 {upperCase(domain)}
                 <br>
+                {#if showDomainCert}
                 <a href={'https://crt.sh/?q='+sha256Hash} target="_blank" rel="noopener noreferrer">{upperCase('View certificate')}</a>
+                {/if}
               </p>
             </div>
             <div class="tooltip plus">
@@ -207,7 +241,7 @@
               <p class="subheading"><strong>STORAGE AND ARCHIVING</strong><span class="far fa-question-circle">i</span>
               <span class="tooltiptext plus">Copies of these web archives were stored in a resilient, peer-to-peer system (IPFS), and in a long term crypto-incentivized distributed storage system (Filecoin)</span></p>
                 <p><strong>{'IPFS'}
-                  <br>{'CID'}</strong>: <a href={"https://replayweb.page/?source=https://w3s.link/ipfs/"+ipfs} target="_blank" rel="noopener noreferrer">{upperCase(ipfs)}</a>
+                  <br>{'CID'}</strong>: <a href={"https://replayweb.page/?source=https://ipfs.io/ipfs/"+ipfs} target="_blank" rel="noopener noreferrer">{upperCase(ipfs)}</a>
                 </p>
                 <p><strong>{upperCase('Filecoin')}
                   <br>{upperCase('Piece Content ID')}</strong>: <a href={"https://filecoin.tools/"+filecoin} target="_blank" rel="noopener noreferrer">{upperCase(filecoin)}</a>
@@ -237,7 +271,7 @@
   }
 
   #panes-container {
-    height: calc(100% - 56px);
+    height: calc(50vh - 80px);
   }
 
   replay-web-page {
@@ -338,6 +372,9 @@
     /* margin: 40px; */
     /* padding: 40px; */
     overflow-wrap: break-word;
+    height: calc(50vh - 56px);
+    display: block;
+    overflow: auto;
   }
 
   .no-display {
