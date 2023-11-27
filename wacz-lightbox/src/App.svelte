@@ -166,7 +166,7 @@
           class={visiblePane == 'replay-web' ? "" : "no-display"}
           id="embed" 
           source={path + filename} 
-          embed="replayonly" 
+          embed="default" 
           {url}
           replayBase={replayBase}
           >
