@@ -185,19 +185,19 @@
             </div>
             <div class="tooltip plus">
               <p><strong>{upperCase('Original URL')}<span class="far fa-question-circle">i</span></strong>
-                <span class="tooltiptext plus">The original link these webpages were archived from</span>: 
+                <span class="tooltiptext plus below">The original link these webpages were archived from</span>: 
                 <a href={url} target="_blank" rel="noopener noreferrer">{upperCase(url)}</a>
               </p>
             </div>
             <div class="tooltip plus">
               <p><strong>{upperCase('Archived on')}<span class="far fa-question-circle">i</span></strong>
-                <span class="tooltiptext plus">The date and time that the website archive was captured</span>: 
+                <span class="tooltiptext plus above">The date and time that the website archive was captured</span>: 
                 {upperCase(date_crawled_formatted)}
               </p>
             </div>  
             <div class="tooltip plus">
               <p><strong>{upperCase('Observed by')}<span class="far fa-question-circle">i</span></strong>
-                <span class="tooltiptext plus">The notary, signed with a cryptographic certificate to establish a witness</span>: 
+                <span class="tooltiptext plus above">The notary, signed with a cryptographic certificate to establish a witness</span>: 
                 {upperCase(domain)}
                 <br>
                 {#if showDomainCert}
@@ -207,7 +207,7 @@
             </div>
             <div class="tooltip plus">
               <p><strong>{upperCase('Package hash')}<span class="far fa-question-circle">i</span></strong>
-                <span class="tooltiptext plus">A hash is a unique fingerprint created with a function using the web archive and metadata as input, that will change if even one byte of the original input is changed. Hashes are used to check if copies of an archive differ from the original.</span>: 
+                <span class="tooltiptext plus above">A hash is a unique fingerprint created with a function using the web archive and metadata as input, that will change if even one byte of the original input is changed. Hashes are used to check if copies of an archive differ from the original.</span>: 
                 {upperCase(package_hash)}
               </p>
             </div>
@@ -219,7 +219,7 @@
 
             <div class="tooltip plus">
               <p class="subheading"><strong>BLOCKCHAIN REGISTRATION</strong><span class="far fa-question-circle">i</span>
-                <span class="tooltiptext plus">Hashes of the web archives & metadata about the archive are registered on different blockchains to establish an immutable record of what was captured, and when.</span></p>
+                <span class="tooltiptext plus below">Hashes of the web archives & metadata about the archive are registered on different blockchains to establish an immutable record of what was captured, and when.</span></p>
               <!-- <div class="tooltip plus"> -->
                 <p><strong>{upperCase('ISCN on Likecoin')}
                   <br>{upperCase('Transaction ID')}</strong>: <a href={"https://app.like.co/"} target="_blank" rel="noopener noreferrer">{upperCase(iscn)}</a>
@@ -239,7 +239,7 @@
 
             <div class="tooltip plus">
               <p class="subheading"><strong>STORAGE AND ARCHIVING</strong><span class="far fa-question-circle">i</span>
-              <span class="tooltiptext plus">Copies of these web archives were stored in a resilient, peer-to-peer system (IPFS), and in a long term crypto-incentivized distributed storage system (Filecoin)</span></p>
+              <span class="tooltiptext plus above">Copies of these web archives were stored in a resilient, peer-to-peer system (IPFS), and in a long term crypto-incentivized distributed storage system (Filecoin)</span></p>
                 <p><strong>{'IPFS'}
                   <br>{'CID'}</strong>: <a href={"https://replayweb.page/?source=https://ipfs.io/ipfs/"+ipfs} target="_blank" rel="noopener noreferrer">{upperCase(ipfs)}</a>
                 </p>
@@ -394,7 +394,7 @@
 
   .tooltip .tooltiptext {
       visibility: hidden;
-      width: 250px;
+      width: 220px;
       background-color: #383838;
       color: #fff;
       text-align: left;
@@ -402,27 +402,38 @@
       padding: 10px 10px;
       position: absolute;
       z-index: 1;
-      bottom: 102%;
       /* left: 50%; */
-      margin-left: -145px;
+      margin-left: -133px;
       opacity: 0;
       transition: opacity 0.3s;
   }
+  .tooltip .tooltiptext.above {
+    bottom: calc(100% + 5px);
+  }
+  .tooltip .tooltiptext.below {
+    top: 30px;
+  }
   .tooltip .tooltiptext::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: #383838 transparent transparent transparent;
+    content: "";
+    position: absolute;    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;  
+  }
+  .tooltip .tooltiptext.above::after {
+    top: 100%;
+    border-color: #383838 transparent transparent transparent;
+  }
+  .tooltip .tooltiptext.below::after {
+    border-color: transparent transparent #383838 transparent;
+    top: -10px;
   }
 
   .tooltip {
     position: relative;
   }
-  .tooltip:hover .tooltiptext {
+  .tooltip:hover .tooltiptext,
+  .tooltip:active .tooltiptext {
       visibility: visible;
       opacity: 1;
   }
