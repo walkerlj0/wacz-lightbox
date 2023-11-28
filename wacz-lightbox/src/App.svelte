@@ -191,13 +191,13 @@
             </div>
             <div class="tooltip plus">
               <p><strong>{upperCase('Archived on')}<span class="far fa-question-circle">i</span></strong>
-                <span class="tooltiptext plus above">The date and time that the website archive was captured</span>: 
+                <span class="tooltiptext plus below">The date and time that the website archive was captured</span>: 
                 {upperCase(date_crawled_formatted)}
               </p>
             </div>  
             <div class="tooltip plus">
               <p><strong>{upperCase('Observed by')}<span class="far fa-question-circle">i</span></strong>
-                <span class="tooltiptext plus above">The notary, signed with a cryptographic certificate to establish a witness</span>: 
+                <span class="tooltiptext plus below">The notary, signed with a cryptographic certificate to establish a witness</span>: 
                 {upperCase(domain)}
                 <br>
                 {#if showDomainCert}
@@ -207,7 +207,7 @@
             </div>
             <div class="tooltip plus">
               <p><strong>{upperCase('Package hash')}<span class="far fa-question-circle">i</span></strong>
-                <span class="tooltiptext plus above">A hash is a unique fingerprint created with a function using the web archive and metadata as input, that will change if even one byte of the original input is changed. Hashes are used to check if copies of an archive differ from the original.</span>: 
+                <span class="tooltiptext plus below">A hash is a unique fingerprint created with a function using the web archive and metadata as input, that will change if even one byte of the original input is changed. Hashes are used to check if copies of an archive differ from the original.</span>: 
                 {upperCase(package_hash)}
               </p>
             </div>
@@ -394,7 +394,7 @@
 
   .tooltip .tooltiptext {
       visibility: hidden;
-      width: 220px;
+      width: 230px;
       background-color: #383838;
       color: #fff;
       text-align: left;
@@ -403,7 +403,7 @@
       position: absolute;
       z-index: 1;
       /* left: 50%; */
-      margin-left: -133px;
+      margin-left: -138px;
       opacity: 0;
       transition: opacity 0.3s;
   }
