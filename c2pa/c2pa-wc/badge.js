@@ -1,1 +1,0 @@
-function r(r){if(!r)return"none";switch(r.error){case"otgp":return"missing";case"error":return"alert";default:return"info"}}function e(r){if(!r.hasManifest)return"none";switch(r.error){case"otgp":return"missing";case"error":return"alert";default:return"info"}}export{e as getBadgeFromIngredient,r as getBadgeFromManifestStore};
