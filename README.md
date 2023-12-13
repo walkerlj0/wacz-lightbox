@@ -1,7 +1,28 @@
-This repo contains examples maintained by Starling Labs for embedding [WACZ web archive files](https://www.notion.so/Authenticated-Web-Archives-WACZ-Files-05ddba458eaf446c8653ab041f4ed33e?pvs=4) and a visual UI that displays photographs using the [C2PA technical Standard](https://c2pa.org/)
 
-This is the main set of examples used for collaborators
+## Usage 
 
-See the website for how to implement these as well as examples.
+Load in the index js and css files in `dist/assets/` and then use
 
-Site is available at https://starlinglab.github.io/web-ui/
+`<wacz-lightbox></wacz-lightbox>`
+
+#### Attributes
+
+**filename** = .wacz filename e.g. `mono-county-pdf-01-2023-08-25T15-57-33.wacz`  
+**path** = path to .wacz file, relative or absolute e.g. `/assets/` or `https://www.example.com/path/to/file/`  
+**replayBase** = path to sw.js, same as it would be for replay-web-page  
+
+#### Styling
+
+Edit the CSS file directly to change certain aspects of the element's styling
+
+## Svelte project compiled with Vite
+
+Working in Svelte:
+
+- Make sure node is installed  
+- Navigate to the root directory in terminal  
+- Run `pnpm install`  
+- For development, run `pnpm run dev`  
+- Open up the webpage at the link it gives you, something like `localhost:5173`, and every time you save a file, it will automatically recompile and reload the webpage.  
+- To get the output, run `pnpm run build` and everything you need can be found in `dist/`.  
+
