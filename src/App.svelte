@@ -4,10 +4,9 @@
 <script>
 
   import { Buffer } from 'buffer/';
-  import downloadButton from './assets/download.svg';
-  export let filename = 'mono-county-pdf-01-2023-08-25T15-57-33.wacz';
+  export let filename = '';
   // let visible = false;
-  export let path = 'https://giacomobg.github.io/wacz-component/dist/assets/';
+  export let path = '';
   // export let replayBase;
   export let replayBase = './replay/';
 
@@ -34,7 +33,7 @@
       const json = await response.json();
 
       // console.log(json);
-      console.log(json_content);
+      // console.log(json_content);
 
       page_name = json_content?.name;
       if (json_content?.private?.crawl_config) { // Browsertrix
@@ -44,9 +43,7 @@
           url = json_content?.private?.crawl_config?.firstSeed;
         }
       } else {  // WebRecorder
-        console.log(json_content?.extras?.wacz?.pages);
         let firstKey = Object.keys(json_content?.extras?.wacz?.pages)[0];
-        console.log(firstKey);      
         url=json_content?.extras?.wacz?.pages[firstKey];
       }
       // if (json_content?.private?.crawl_config?.config?.seeds) {
@@ -222,17 +219,17 @@
                 <span class="tooltiptext plus below">Hashes of the web archives & metadata about the archive are registered on different blockchains to establish an immutable record of what was captured, and when.</span></p>
               <!-- <div class="tooltip plus"> -->
                 <p><strong>{upperCase('ISCN on Likecoin')}
-                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://app.like.co/"} target="_blank" rel="noopener noreferrer">{upperCase(iscn)}</a>
+                  <br>{upperCase('Transaction ID')}</strong>: {upperCase(iscn)}
                 </p>
               <!-- </div> -->
               <!-- <div class="tooltip plus"> -->
                 <p><strong>{upperCase('Numbers Protocol on Numbers')}
-                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://mainnet.num.network/overview"} target="_blank" rel="noopener noreferrer">{upperCase(iscn)}</a>
+                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://mainnet.num.network/tx/"+numbers} target="_blank" rel="noopener noreferrer">{upperCase(numbers)}</a>
                 </p>
               <!-- </div> -->
               <!-- <div class="tooltip plus"> -->
                 <p><strong>{upperCase('Numbers Protocol on Avalanche')} 
-                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://snowtrace.io/search?f=0&q="+avalanche} target="_blank" rel="noopener noreferrer">{upperCase(avalanche)}</a>
+                  <br>{upperCase('Transaction ID')}</strong>: <a href={"https://snowtrace.io/tx/"+avalanche} target="_blank" rel="noopener noreferrer">{upperCase(avalanche)}</a>
                 </p>
               <!-- </div> -->
             </div>
@@ -270,33 +267,8 @@
     /* background-color: #fff; */
   }
 
-  @media (min-width:650px) {
-    #panes-container {
-      height: calc(50vh - 80px);
-    }
-      .pane {
-      /* box-shadow: 1px 4px 48px rgba(0,0,0,.075); */
-      /* margin: 40px; */
-      /* padding: 40px; */
-      overflow-wrap: break-word;
-      height: calc(50vh - 80px);
-      display: block;
-      overflow: auto;
-    }
-  }
-  @media (max-width:649px) {
-    #panes-container {
-      height: calc(85vh - 225px);
-    }
-  .pane {
-    /* box-shadow: 1px 4px 48px rgba(0,0,0,.075); */
-    /* margin: 40px; */
-    /* padding: 40px; */
-    overflow-wrap: break-word;
-    height: calc(85vh - 225px);
-    display: block;
-    overflow: auto;
-  }
+  #panes-container {
+    height: calc(100vh - 80px);
   }
 
   replay-web-page {
@@ -386,6 +358,16 @@
 
   :global(a) {
     color: #383838;
+  }
+
+  .pane {
+    /* box-shadow: 1px 4px 48px rgba(0,0,0,.075); */
+    /* margin: 40px; */
+    /* padding: 40px; */
+    overflow-wrap: break-word;
+    /* height: calc(100vh - 56px);
+    display: block;
+    overflow: auto; */
   }
 
   .no-display {
